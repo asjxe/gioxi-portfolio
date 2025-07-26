@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chi Sono | GIOXI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --main-color: #e50914;
+      --secondary-color: #1e1e2f;
+      --bg-color: #0c0c0f;
+      --text-color: #e0e0e0;
+      --highlight: #ff4757;
+      --font: 'Oxanium', cursive;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font);
+      background: var(--bg-color) url('https://i.ibb.co/Q7tGChf7/c49e571e-b3fb-49f8-8674-e7bbe9be79f9.png') repeat;
+      color: var(--text-color);
+      overflow-x: hidden;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: rgba(0, 0, 0, 0.8);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo {
+      height: 55px;
+      cursor: pointer;
+      transition: transform 0.4s ease;
+    }
+    .logo:hover {
+      transform: scale(1.08) rotate(-2deg);
+    }
+    .menu-icon {
+      height: 40px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .menu-icon:hover {
+      transform: scale(1.15);
+    }
+    .menu {
+      position: absolute;
+      top: 70px;
+      right: 20px;
+      background-color: var(--secondary-color);
+      border-radius: 10px;
+      padding: 1rem;
+      display: none;
+      flex-direction: column;
+      box-shadow: 0 0 25px var(--highlight);
+      z-index: 200;
+      min-width: 250px;
+    }
+    .menu a {
+      color: var(--text-color);
+      text-decoration: none;
+      margin: 0.5rem 0;
+      font-weight: bold;
+      font-size: 1.1rem;
+      transition: background 0.3s, padding-left 0.3s;
+    }
+    .menu a:hover {
+      background: var(--highlight);
+      border-radius: 6px;
+      padding-left: 10px;
+      color: #fff;
+    }
+    .close-btn {
+      align-self: flex-end;
+      font-size: 1.4rem;
+      cursor: pointer;
+      margin-bottom: 0.5rem;
+      transition: color 0.3s ease;
+    }
+    .close-btn:hover {
+      color: var(--main-color);
+    }
+    .lang-switcher {
+      display: flex;
+      justify-content: center;
+      margin: 1.2rem;
+    }
+    .lang-switcher button {
+      margin: 0 0.7rem;
+      background: var(--highlight);
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      font-family: var(--font);
+    }
+    .lang-switcher button:hover {
+      background: #b30000;
+    }
+    .container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: rgba(30, 30, 47, 0.96);
+      border-radius: 14px;
+      box-shadow: 0 0 25px var(--main-color);
+      animation: fadeIn 1s ease-in;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    h1 {
+      text-align: center;
+      color: var(--main-color);
+      margin-bottom: 1.5rem;
+    }
+    p {
+      font-size: 1.25rem;
+      line-height: 1.9;
+      padding: 1rem;
+      border-left: 4px solid transparent;
+      transition: all 0.4s ease;
+    }
+    p:hover {
+      background: rgba(255, 71, 87, 0.1);
+      border-left: 4px solid var(--highlight);
+      padding-left: 1.5rem;
+    }
+    .kaneki {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      width: 65px;
+      cursor: pointer;
+      transition: transform 0.4s;
+      z-index: 150;
+    }
+    .kaneki:hover {
+      transform: scale(1.15);
+    }
+    .tooltip {
+      display: none;
+      position: fixed;
+      bottom: 100px;
+      left: 20px;
+      background: rgba(0, 0, 0, 0.8);
+      color: var(--text-color);
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      width: 240px;
+      z-index: 150;
+    }
+    .kaneki:hover + .tooltip {
+      display: block;
+    }
+  </style>
+</head>
+<body onload="setLanguage('it')">
+  <header>
+    <a href="index.html"><img class="logo" src="https://i.ibb.co/DHZzMwPP/99b7b37d-9c84-4145-8a4e-9b4ea6a69154.png" alt="logo GIOXI"></a>
+    <img class="menu-icon" src="https://i.ibb.co/v4r8NrzY/ef6574e3-290d-4b2c-b12d-4cf70f478395.png" alt="menu" onclick="toggleMenu()">
+    <div class="menu" id="menu">
+      <div class="close-btn" onclick="toggleMenu()">✖</div>
+      <a href="ringraziamenti.html">🙏 Ringraziamenti</a>
+      <a href="faceit.html">💥 Dati Faceit</a>
+      <a href="tornei.html">🏆 Tutti i tornei</a>
+      <a href="giochi.html">🎮 Giochi Competitivi</a>
+      <a href="ruoli.html">🎯 I miei ruoli</a>
+      <a href="statistiche.html">📊 Statistiche Complete</a>
+      <a href="timeline.html">📅 Cronologia</a>
+      <a href="setup.html">🛠 Setup Pro</a>
+    </div>
+  </header>
+  <div class="lang-switcher">
+    <button onclick="setLanguage('it')">🇮🇹 ITA</button>
+    <button onclick="setLanguage('en')">🇬🇧 ENG</button>
+    <button onclick="setLanguage('es')">🇪🇸 ESP</button>
+  </div>
+  <div class="container">
+    <h1 data-it="Chi Sono" data-en="About Me" data-es="Quién Soy">Chi Sono</h1>
+    <p id="bio-text"
+       data-it="Sono conosciuto come GIOXI, un gamer competitivo con oltre 7 anni di esperienza. Ho iniziato da giovane, coltivando questa passione fino a farla diventare parte essenziale della mia identità. Ho vissuto momenti unici nei tornei, affrontato sfide internazionali, formato legami indelebili con compagni e avversari. Non è solo competizione: è famiglia, dedizione, memoria, e orgoglio. Fin dall'inizio ho messo cuore e testa in ogni partita, imparando dai fallimenti e migliorando ogni giorno. Questo percorso non è stato semplice: ci sono stati sacrifici, notti insonni, ore su ore di allenamento. Ma ogni secondo è servito a costruire quello che sono oggi: un punto di riferimento, una voce per chi vuole iniziare e crede di non farcela. Spero che la mia storia possa ispirare anche altri a non mollare mai e a dare sempre il massimo, perché la vera vittoria è diventare la miglior versione di sé stessi."
+       data-en="Known as GIOXI, I'm a competitive gamer with over 7 years of experience. I started young, building this passion into a core part of who I am. I've lived unique moments in tournaments, faced international challenges, and built unbreakable bonds with teammates and rivals. It's not just competition: it's family, dedication, memory, and pride. From the beginning, I put heart and mind into every match, learning from failures and improving day by day. The journey wasn't easy: it required sacrifices, sleepless nights, and countless hours of practice. But every second shaped who I am today: a point of reference, a voice for those starting out who think they can't make it. I hope my story inspires others to never give up and to always push forward, because true victory lies in becoming the best version of yourself."
+       data-es="Conocido como GIOXI, soy un gamer competitivo con más de 7 años de experiencia. Comencé joven, cultivando esta pasión hasta que se convirtió en parte esencial de quién soy. He vivido momentos únicos en torneos, enfrentado desafíos internacionales y creado lazos inquebrantables con compañeros y rivales. No es solo competencia: es familia, dedicación, memoria y orgullo. Desde el principio puse corazón y mente en cada partida, aprendiendo de los fracasos y mejorando día a día. Este camino no fue fácil: hubo sacrificios, noches sin dormir y muchas horas de práctica. Pero cada segundo sirvió para construir quien soy hoy: un referente, una voz para quienes comienzan y creen que no pueden lograrlo. Espero que mi historia inspire a otros a no rendirse nunca y a dar siempre lo mejor de sí, porque la verdadera victoria está en convertirse en la mejor versión de uno mismo.">
+      Sono conosciuto come <strong>GIOXI</strong>, un gamer competitivo con oltre 7 anni di esperienza. Ho iniziato da giovane, coltivando questa passione fino a farla diventare parte essenziale della mia identità. Ho vissuto momenti unici nei tornei, affrontato sfide internazionali, formato legami indelebili con compagni e avversari. Non è solo competizione: è famiglia, dedizione, memoria, e orgoglio. Fin dall'inizio ho messo cuore e testa in ogni partita, imparando dai fallimenti e migliorando ogni giorno. Questo percorso non è stato semplice: ci sono stati sacrifici, notti insonni, ore su ore di allenamento. Ma ogni secondo è servito a costruire quello che sono oggi: un punto di riferimento, una voce per chi vuole iniziare e crede di non farcela. Spero che la mia storia possa ispirare anche altri a non mollare mai e a dare sempre il massimo, perché la vera vittoria è diventare la miglior versione di sé stessi.
+    </p>
+  </div>
+  <img class="kaneki" src="https://i.ibb.co/tM1SGSqW/6335cfc9-e7a0-4136-ac28-3f20408f6c6a.png" alt="kaneki chibi">
+  <div class="tooltip">Questo sito è ispirato a Tokyo Ghoul. Per tornare alla home, clicca sul logo in alto a sinistra.</div>
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('menu');
+      menu.style.display = (menu.style.display === 'flex') ? 'none' : 'flex';
+    }
+    function setLanguage(lang) {
+      const elements = document.querySelectorAll('[data-it]');
+      elements.forEach(el => {
+        const text = el.getAttribute(`data-${lang}`);
+        if (text) el.innerText = text;
+      });
+    }
+  </script>
+</body>
+</html>
