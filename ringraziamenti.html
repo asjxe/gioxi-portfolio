@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ringraziamenti | GIOXI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --main-color: #e50914;
+      --secondary-color: #1e1e2f;
+      --bg-color: #0c0c0f;
+      --text-color: #e0e0e0;
+      --highlight: #ff4757;
+      --font: 'Oxanium', cursive;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font);
+      background: var(--bg-color) url('https://i.ibb.co/Q7tGChf7/c49e571e-b3fb-49f8-8674-e7bbe9be79f9.png') repeat;
+      color: var(--text-color);
+      overflow-x: hidden;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: rgba(0, 0, 0, 0.85);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo {
+      height: 55px;
+      cursor: pointer;
+      transition: transform 0.4s ease;
+    }
+    .logo:hover {
+      transform: scale(1.08) rotate(-2deg);
+    }
+    .menu-icon {
+      height: 40px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .menu-icon:hover {
+      transform: scale(1.15);
+    }
+    .menu {
+      position: absolute;
+      top: 70px;
+      right: 20px;
+      background-color: var(--secondary-color);
+      border-radius: 10px;
+      padding: 1rem;
+      display: none;
+      flex-direction: column;
+      box-shadow: 0 0 25px var(--highlight);
+      z-index: 200;
+      min-width: 250px;
+    }
+    .menu a {
+      color: var(--text-color);
+      text-decoration: none;
+      margin: 0.5rem 0;
+      font-weight: bold;
+      font-size: 1.1rem;
+      transition: background 0.3s, padding-left 0.3s;
+    }
+    .menu a:hover {
+      background: var(--highlight);
+      border-radius: 6px;
+      padding-left: 10px;
+      color: #fff;
+    }
+    .close-btn {
+      align-self: flex-end;
+      font-size: 1.4rem;
+      cursor: pointer;
+      margin-bottom: 0.5rem;
+      transition: color 0.3s ease;
+    }
+    .close-btn:hover {
+      color: var(--main-color);
+    }
+    .lang-switch {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    .lang-switch button {
+      background-color: transparent;
+      border: 2px solid var(--main-color);
+      color: var(--text-color);
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .lang-switch button:hover {
+      background-color: var(--main-color);
+      color: #000;
+    }
+    .container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: rgba(30, 30, 47, 0.96);
+      border-radius: 14px;
+      box-shadow: 0 0 25px var(--main-color);
+      animation: fadeIn 1s ease-in;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    h1 {
+      text-align: center;
+      color: var(--main-color);
+      margin-bottom: 2rem;
+    }
+    p {
+      font-size: 1.2rem;
+      line-height: 1.9;
+      padding: 1rem;
+      border-left: 4px solid transparent;
+      transition: all 0.4s ease;
+    }
+    p:hover {
+      background: rgba(255, 71, 87, 0.1);
+      border-left: 4px solid var(--highlight);
+      padding-left: 1.5rem;
+    }
+    .thank-image {
+      display: block;
+      margin: 3rem auto 1rem;
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 0 25px var(--main-color);
+      animation: zoomIn 1.2s ease-in-out;
+    }
+    @keyframes zoomIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    #kaneki-mascot {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      width: 70px;
+      transition: transform 0.3s;
+      z-index: 300;
+    }
+    #kaneki-mascot:hover {
+      transform: scale(1.1);
+    }
+    #kaneki-tooltip {
+      display: none;
+      position: fixed;
+      bottom: 100px;
+      left: 20px;
+      background: #111;
+      color: white;
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      white-space: nowrap;
+      z-index: 300;
+    }
+    #kaneki-mascot:hover + #kaneki-tooltip {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://i.ibb.co/9kfJWKYk/9b20367e-ed0d-48d7-a5bd-f872bf23f47a.png" class="logo" onclick="window.location.href='index.html'" alt="GIOXI Logo">
+    <img src="https://i.ibb.co/v4r8NrzY/ef6574e3-290d-4b2c-b12d-4cf70f478395.png" class="menu-icon" onclick="toggleMenu()" alt="Menu">
+    <div class="menu" id="menu">
+      <span class="close-btn" onclick="toggleMenu()">&times;</span>
+      <a href="chi-sono.html">👤 Chi Sono</a>
+      <a href="tornei.html">🏆 Tutti i tornei</a>
+      <a href="giochi.html">🎮 Giochi Competitivi</a>
+      <a href="ruoli.html">🎯 I miei ruoli</a>
+      <a href="statistiche.html">📊 Statistiche Complete</a>
+      <a href="timeline.html">📅 Cronologia</a>
+      <a href="setup.html">🛠 Setup Pro</a>
+      <a href="ringraziamenti.html">🙏 Ringraziamenti</a>
+    </div>
+  </header>
+
+  <div class="lang-switch">
+    <button onclick="setLanguage('it')">🇮🇹 Italiano</button>
+    <button onclick="setLanguage('en')">🇬🇧 English</button>
+    <button onclick="setLanguage('es')">🇪🇸 Español</button>
+  </div>
+
+  <div class="container">
+    <h1 data-it="Ringraziamenti" data-en="Thanks" data-es="Agradecimientos">Ringraziamenti</h1>
+    <p data-it="Un ringraziamento speciale a tutti i compagni con cui ho condiviso partite, allenamenti, momenti difficili e vittorie incredibili. Ogni duo con cui ho giocato mi ha insegnato qualcosa, ogni team ha rappresentato una tappa della mia crescita competitiva."
+       data-en="A special thank you to all the teammates I've played with, trained with, suffered and celebrated with. Every duo taught me something, every team helped me grow competitively."
+       data-es="Un agradecimiento especial a todos los compañeros con los que he compartido partidas, entrenamientos, momentos difíciles y victorias increíbles. Cada dúo me enseñó algo, cada equipo representó una etapa de mi crecimiento competitivo.">
+    </p>
+    <p data-it="Un grazie enorme alla multigaming dei W-Fox, che mi ha accolto, supportato, e motivato giorno dopo giorno. Giosuè, il loro fondatore, è stato un punto fermo per me, sempre presente con consigli, incoraggiamenti e fiducia."
+       data-en="A huge thanks to the W-Fox multigaming team, who welcomed me, supported me, and motivated me daily. Giosuè, their founder, has been a rock for me, always present with advice, encouragement, and trust."
+       data-es="Un enorme agradecimiento a la multigaming de W-Fox, que me acogió, apoyó y motivó día tras día. Giosuè, su fundador, fue un pilar para mí, siempre presente con consejos, ánimos y confianza.">
+    </p>
+    <p data-it="Ringrazio anche tutte le community, organizzazioni e clan che hanno creduto in me nel tempo, che mi hanno offerto opportunità, che mi hanno dato spazio per migliorare e competere al massimo livello."
+       data-en="I also thank all the communities, organizations and clans who believed in me over time, who gave me opportunities, who gave me the space to improve and compete at the highest level."
+       data-es="También agradezco a todas las comunidades, organizaciones y clanes que creyeron en mí a lo largo del tiempo, que me dieron oportunidades y espacio para mejorar y competir al máximo nivel.">
+    </p>
+    <p data-it="Infine, grazie a Faceit. Per la piattaforma, per i tornei, per la possibilità di confrontarmi con giocatori incredibili e per aver dato un senso concreto al mio percorso competitivo."
+       data-en="Finally, thank you to Faceit. For the platform, the tournaments, the opportunity to challenge incredible players and for giving real meaning to my competitive path."
+       data-es="Finalmente, gracias a Faceit. Por la plataforma, los torneos, la oportunidad de enfrentarme a jugadores increíbles y por dar sentido real a mi trayectoria competitiva.">
+    </p>
+    <img class="thank-image" src="https://i.ibb.co/LzqcPXBr/50f9d415-d185-4b4a-978d-53d5e67f9e8e.png" alt="Ringraziamento Artistico">
+  </div>
+
+  <img id="kaneki-mascot" src="https://i.ibb.co/tM1SGSqW/6335cfc9-e7a0-4136-ac28-3f20408f6c6a.png" alt="Kaneki">
+  <div id="kaneki-tooltip">Sito ispirato a Tokyo Ghoul</div>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('menu');
+      menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+    }
+    function setLanguage(lang) {
+      document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+        el.textContent = el.getAttribute('data-' + lang);
+      });
+    }
+    setLanguage('it');
+  </script>
+</body>
+</html>
