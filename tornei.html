@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tornei | GIOXI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+  :root {
+    --main-color: #e50914;
+    --secondary-color: #1e1e2f;
+    --bg-color: #0c0c0f;
+    --text-color: #e0e0e0;
+    --highlight: #ff4757;
+    --glass: rgba(30, 30, 47, 0.96);
+    --font: 'Oxanium', cursive;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: var(--font);
+    background: var(--bg-color) url('https://i.ibb.co/Q7tGChf7/c49e571e-b3fb-49f8-8674-e7bbe9be79f9.png') repeat;
+    color: var(--text-color);
+    line-height: 1.6;
+    scroll-behavior: smooth;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(4px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+  }
+
+  .logo {
+    height: 55px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  .logo:hover {
+    transform: scale(1.05);
+  }
+
+  .menu-icon {
+    height: 40px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  .menu-icon:hover {
+    transform: rotate(15deg);
+  }
+
+  .menu {
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    background: var(--glass);
+    border-radius: 12px;
+    padding: 1rem;
+    display: none;
+    flex-direction: column;
+    box-shadow: 0 0 25px var(--highlight);
+    z-index: 200;
+    min-width: 250px;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  .menu a {
+    color: var(--text-color);
+    text-decoration: none;
+    margin: 0.5rem 0;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.25s ease;
+  }
+
+  .menu a:hover {
+    background: var(--highlight);
+    color: #fff;
+    border-radius: 8px;
+    padding-left: 12px;
+  }
+
+  .close-btn {
+    align-self: flex-end;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+    color: var(--highlight);
+  }
+
+  .lang-switcher {
+    display: flex;
+    justify-content: center;
+    margin: 1.5rem;
+    gap: 1rem;
+  }
+
+  .lang-switcher button {
+    background: transparent;
+    color: var(--main-color);
+    border: 2px solid var(--main-color);
+    padding: 8px 16px;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-family: var(--font);
+    transition: 0.3s ease;
+  }
+
+  .lang-switcher button:hover {
+    background: var(--highlight);
+    color: #fff;
+    border-color: #fff;
+  }
+
+  .year-selector {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .year-selector select {
+    padding: 10px 16px;
+    border-radius: 10px;
+    background-color: var(--secondary-color);
+    color: var(--main-color);
+    border: 2px solid var(--main-color);
+    font-family: var(--font);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+
+  .year-selector select:hover {
+    background-color: var(--highlight);
+    color: #fff;
+    border-color: #fff;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: var(--glass);
+    border-radius: 16px;
+    box-shadow: 0 0 30px var(--main-color);
+  }
+
+  h1 {
+    text-align: center;
+    color: var(--main-color);
+    margin-bottom: 2.5rem;
+    font-size: 2.4rem;
+    letter-spacing: 1px;
+    text-shadow: 0 0 8px rgba(229, 9, 20, 0.6);
+  }
+
+  h2 {
+    margin-top: 2.5rem;
+    color: var(--highlight);
+    border-bottom: 2px solid var(--highlight);
+    padding-bottom: 0.4rem;
+    font-size: 1.8rem;
+    text-shadow: 0 0 6px rgba(255, 71, 87, 0.4);
+  }
+
+  .tournament-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.2rem;
+  }
+
+  .tournament-table th, .tournament-table td {
+    border: 1px solid #444;
+    padding: 0.9rem;
+    text-align: center;
+  }
+
+  .tournament-table th {
+    background: var(--secondary-color);
+    color: var(--main-color);
+    font-weight: 700;
+    font-size: 1.05rem;
+  }
+
+  .tournament-table tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.04);
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+
+</head>
+<body>
+  <header>
+    <a href="index.html"><img class="logo" src="https://i.ibb.co/DHZzMwPP/99b7b37d-9c84-4145-8a4e-9b4ea6a69154.png" alt="logo GIOXI"></a>
+    <img class="menu-icon" src="https://i.ibb.co/v4r8NrzY/ef6574e3-290d-4b2c-b12d-4cf70f478395.png" alt="menu" onclick="toggleMenu()">
+    <div class="menu" id="menu">
+      <div class="close-btn" onclick="toggleMenu()">✖</div>
+      <a href="ringraziamenti.html">🙏 Ringraziamenti</a>
+      <a href="faceit.html">💥 Dati Faceit</a>
+      <a href="tornei.html">🏆 Tutti i tornei</a>
+      <a href="giochi.html">🎮 Giochi Competitivi</a>
+      <a href="ruoli.html">🎯 I miei ruoli</a>
+      <a href="statistiche.html">📊 Statistiche Complete</a>
+      <a href="timeline.html">📅 Cronologia</a>
+      <a href="setup.html">🛠 Setup Pro</a>
+    </div>
+  </header>
+  <div class="lang-switcher">
+    <button onclick="setLanguage('it')">🇮🇹 ITA</button>
+    <button onclick="setLanguage('en')">🇬🇧 ENG</button>
+    <button onclick="setLanguage('es')">🇪🇸 ESP</button>
+  </div>
+  <div class="container">
+    <h1>Tutti i Tornei</h1>
+
+<div class="year-selector">
+      <label for="yearSelector">📅 Seleziona l'anno:</label>
+      <select id="yearSelector" onchange="filterByYear()">
+        <option value="all">Tutti</option>
+        <option value="2018">2018</option>
+        <option value="2019">2019</option>
+        <option value="2020">2020</option>
+        <option value="2021">2021</option>
+        <option value="2022">2022</option>
+        <option value="2023">2023</option>
+        <option value="2024">2024</option>
+      </select>
+    </div>
+<div id="tournament-sections">
+<div id="year-2018">
+    <h2>Rainbow Six Siege - 2018</h2>
+    <table class="tournament-table">
+      <thead>
+        <tr><th>Data</th><th>Evento</th><th>Posizione</th><th>Vincita</th></tr>
+      </thead>
+      <tbody id="r6-2018-body">
+  <tr><td>06/01/2018</td><td>ESL Go4 R6 #101</td><td>8°</td><td>-</td></tr>
+  <tr><td>20/01/2018</td><td>ESL Go4 R6 #103</td><td>6°</td><td>-</td></tr>
+  <tr><td>03/02/2018</td><td>ESL Go4 R6 #105</td><td>3°</td><td>15€</td></tr>
+  <tr><td>17/02/2018</td><td>ESL Go4 R6 #107</td><td>4°</td><td>-</td></tr>
+  <tr><td>03/03/2018</td><td>ESL Go4 R6 #109</td><td>7°</td><td>-</td></tr>
+  <tr><td>17/03/2018</td><td>Nicecactus Spring Cup</td><td>5°</td><td>-</td></tr>
+  <tr><td>07/04/2018</td><td>ESL Go4 R6 #113</td><td>6°</td><td>-</td></tr>
+  <tr><td>21/04/2018</td><td>ESL Go4 R6 #115</td><td>4°</td><td>-</td></tr>
+  <tr><td>05/05/2018</td><td>ESL Go4 R6 #117</td><td>1°</td><td>50€</td></tr>
+  <tr><td>19/05/2018</td><td>Nicecactus 2v2 May</td><td>3°</td><td>20€</td></tr>
+  <tr><td>09/06/2018</td><td>ESL Go4 R6 #120</td><td>5°</td><td>-</td></tr>
+  <tr><td>07/07/2018</td><td>ESL Go4 R6 #124</td><td>6°</td><td>-</td></tr>
+  <tr><td>01/09/2018</td><td>Nicecactus 3v3 Summer</td><td>2°</td><td>30€</td></tr>
+  <tr><td>29/09/2018</td><td>ESL Go4 R6 #130</td><td>5°</td><td>-</td></tr>
+  <tr><td>20/10/2018</td><td>ESL Go4 R6 #133</td><td>6°</td><td>-</td></tr>
+  <tr><td>10/11/2018</td><td>Nicecactus 2v2 Nov</td><td>4°</td><td>-</td></tr>
+  <tr><td>01/12/2018</td><td>ESL Go4 R6 #137</td><td>3°</td><td>25€</td></tr>
+  <tr><td>15/12/2018</td><td>ESL Go4 R6 #139</td><td>6°</td><td>-</td></tr>
+      </tbody>
+    </table>
+</div>
+<div id="year-2019">
+    <h2>Rainbow Six Siege - 2019</h2>
+    <table class="tournament-table">
+      <thead>
+        <tr><th>Data</th><th>Evento</th><th>Posizione</th><th>Vincita</th></tr>
+      </thead>
+      <tbody id="r6-2019-body">
+  <tr><td>05/01/2019</td><td>ESL Go4 R6 #114</td><td>6°</td><td>-</td></tr>
+  <tr><td>12/01/2019</td><td>ESL Go4 R6 #115</td><td>5°</td><td>-</td></tr>
+  <tr><td>19/01/2019</td><td>ESL Go4 R6 #116</td><td>4°</td><td>-</td></tr>
+  <tr><td>26/01/2019</td><td>ESL Go4 R6 #117</td><td>3°</td><td>25€</td></tr>
+  <tr><td>02/02/2019</td><td>ESL Go4 R6 #118</td><td>2°</td><td>35€</td></tr>
+  <tr><td>09/02/2019</td><td>ESL Go4 R6 #119</td><td>6°</td><td>-</td></tr>
+  <tr><td>16/02/2019</td><td>ESL Go4 R6 #120</td><td>4°</td><td>-</td></tr>
+  <tr><td>23/02/2019</td><td>ESL Go4 R6 #121</td><td>1°</td><td>50€</td></tr>
+  <tr><td>02/03/2019</td><td>Nicecactus 2v2 Feb</td><td>3°</td><td>20€</td></tr>
+  <tr><td>09/03/2019</td><td>ESL Go4 R6 #123</td><td>2°</td><td>35€</td></tr>
+  <tr><td>16/03/2019</td><td>ESL Go4 R6 #124</td><td>6°</td><td>-</td></tr>
+  <tr><td>23/03/2019</td><td>ESL Go4 R6 #125</td><td>5°</td><td>-</td></tr>
+  <tr><td>30/03/2019</td><td>ESL Go4 R6 #126</td><td>3°</td><td>25€</td></tr>
+  <tr><td>06/04/2019</td><td>Nicecactus 3v3 Spring</td><td>5°</td><td>-</td></tr>
+  <tr><td>13/04/2019</td><td>ESL Go4 R6 #128</td><td>4°</td><td>-</td></tr>
+  <tr><td>20/04/2019</td><td>ESL Go4 R6 #129</td><td>2°</td><td>35€</td></tr>
+  <tr><td>27/04/2019</td><td>ESL Go4 R6 #130</td><td>1°</td><td>50€</td></tr>
+  <tr><td>04/05/2019</td><td>ESL Go4 R6 #131</td><td>5°</td><td>-</td></tr>
+  <tr><td>11/05/2019</td><td>Nicecactus 2v2 May</td><td>2°</td><td>30€</td></tr>
+  <tr><td>18/05/2019</td><td>ESL Go4 R6 #133</td><td>6°</td><td>-</td></tr>
+  <tr><td>25/05/2019</td><td>ESL Go4 R6 #134</td><td>2°</td><td>35€</td></tr>
+  <tr><td>01/06/2019</td><td>ESL Go4 R6 #135</td><td>3°</td><td>25€</td></tr>
+  <tr><td>08/06/2019</td><td>ESL Go4 R6 #136</td><td>4°</td><td>-</td></tr>
+  <tr><td>15/06/2019</td><td>Nicecactus 2v2 Summer</td><td>1°</td><td>60€</td></tr>
+  <tr><td>22/06/2019</td><td>ESL Go4 R6 #138</td><td>6°</td><td>-</td></tr>
+  <tr><td>29/06/2019</td><td>ESL Go4 R6 #139</td><td>2°</td><td>35€</td></tr>
+  <tr><td>06/07/2019</td><td>ESL Go4 R6 #140</td><td>3°</td><td>25€</td></tr>
+  <tr><td>13/07/2019</td><td>ESL Go4 R6 #141</td><td>5°</td><td>-</td></tr>
+  <tr><td>20/07/2019</td><td>Bstaard's Challenge</td><td>4°</td><td>-</td></tr>
+  <tr><td>27/07/2019</td><td>ESL Go4 R6 #143</td><td>4°</td><td>-</td></tr>
+  <tr><td>03/08/2019</td><td>ESL Go4 R6 #144</td><td>2°</td><td>35€</td></tr>
+  <tr><td>10/08/2019</td><td>Nicecactus 3v3 Summer</td><td>3°</td><td>20€</td></tr>
+  <tr><td>17/08/2019</td><td>ESL Go4 R6 #145</td><td>1°</td><td>50€</td></tr>
+  <tr><td>24/08/2019</td><td>ESL Go4 R6 #146</td><td>6°</td><td>-</td></tr>
+  <tr><td>07/09/2019</td><td>ESL Go4 R6 #147</td><td>4°</td><td>-</td></tr>
+  <tr><td>14/09/2019</td><td>Nicecactus 2v2 Sept</td><td>3°</td><td>20€</td></tr>
+  <tr><td>21/09/2019</td><td>ESL Go4 R6 #149</td><td>2°</td><td>35€</td></tr>
+  <tr><td>28/09/2019</td><td>ESL Go4 R6 #150</td><td>1°</td><td>50€</td></tr>
+  <tr><td>05/10/2019</td><td>ESL Go4 R6 #151</td><td>5°</td><td>-</td></tr>
+  <tr><td>12/10/2019</td><td>Nicecactus 3v3 Ott</td><td>1°</td><td>60€</td></tr>
+  <tr><td>19/10/2019</td><td>ESL Go4 R6 #153</td><td>6°</td><td>-</td></tr>
+  <tr><td>26/10/2019</td><td>ESL Go4 R6 #154</td><td>3°</td><td>25€</td></tr>
+  <tr><td>02/11/2019</td><td>ESL Go4 R6 #155</td><td>2°</td><td>35€</td></tr>
+  <tr><td>09/11/2019</td><td>Nicecactus 2v2 Finale</td><td>1°</td><td>80€</td></tr>
+  <tr><td>16/11/2019</td><td>ESL Go4 R6 #156</td><td>4°</td><td>-</td></tr>
+  <tr><td>23/11/2019</td><td>ESL Go4 R6 #157</td><td>6°</td><td>-</td></tr>
+  <tr><td>30/11/2019</td><td>ESL Go4 R6 #158</td><td>2°</td><td>35€</td></tr>
+  <tr><td>07/12/2019</td><td>Nicecactus XMas Cup</td><td>2°</td><td>40€</td></tr>
+  <tr><td>14/12/2019</td><td>ESL Go4 R6 #160</td><td>5°</td><td>-</td></tr>
+  <tr><td>21/12/2019</td><td>ESL Go4 R6 #161</td><td>1°</td><td>50€</td></tr>
+  <tr><td>28/12/2019</td><td>ESL Go4 R6 #162</td><td>6°</td><td>-</td></tr>
+      </tbody>
+    </table>
+</div>
+<div id="year-2020">
+    <h2>Rainbow Six Siege - 2020</h2>
+    <table class="tournament-table">
+      <thead>
+        <tr><th>Data</th><th>Evento</th><th>Posizione</th><th>Vincita</th></tr>
+      </thead>
+      <tbody id="r6-2020-body">
+  <tr><td>05/01/2020</td><td>ESL Go4 R6 #163</td><td>5°</td><td>-</td></tr>
+  <tr><td>12/01/2020</td><td>ESL Go4 R6 #164</td><td>3°</td><td>25€</td></tr>
+  <tr><td>26/01/2020</td><td>Nicecactus 3v3 Gennaio</td><td>2°</td><td>30€</td></tr>
+  <tr><td>02/02/2020</td><td>Streamer Invitational - TekNoyd</td><td>4°</td><td>20€</td></tr>
+  <tr><td>09/02/2020</td><td>ESL Go4 R6 #166</td><td>4°</td><td>-</td></tr>
+  <tr><td>16/02/2020</td><td>Italian Community Cup</td><td>5°</td><td>-</td></tr>
+  <tr><td>23/02/2020</td><td>Nicecactus Duo Winter</td><td>4°</td><td>-</td></tr>
+  <tr><td>08/03/2020</td><td>ESL Go4 R6 #168</td><td>1°</td><td>50€</td></tr>
+  <tr><td>15/03/2020</td><td>LAN Invitational Preview Season</td><td>2°</td><td>Skin Exclusive</td></tr>
+  <tr><td>22/03/2020</td><td>Nicecactus Solo Cup</td><td>6°</td><td>-</td></tr>
+  <tr><td>29/03/2020</td><td>ESL Go4 R6 #170</td><td>2°</td><td>35€</td></tr>
+  <tr><td>05/04/2020</td><td>MacieJay Creator Cup</td><td>3°</td><td>20€</td></tr>
+  <tr><td>12/04/2020</td><td>Nicecactus 1v1 Duel</td><td>5°</td><td>-</td></tr>
+  <tr><td>19/04/2020</td><td>Multigaming League Cup</td><td>5°</td><td>-</td></tr>
+  <tr><td>26/04/2020</td><td>Nicecactus Open Primavera</td><td>3°</td><td>25€</td></tr>
+  <tr><td>03/05/2020</td><td>Nicecactus Open Maggio</td><td>1°</td><td>60€</td></tr>
+  <tr><td>10/05/2020</td><td>Faceit Cup Italia</td><td>4°</td><td>-</td></tr>
+  <tr><td>24/05/2020</td><td>LAN Milano Gaming Fest</td><td>6°</td><td>Mouse Logitech G203</td></tr>
+  <tr><td>31/05/2020</td><td>Nicecactus Duo Challenge</td><td>2°</td><td>30€</td></tr>
+  <tr><td>07/06/2020</td><td>Bstaaard's Challenge</td><td>4°</td><td>-</td></tr>
+  <tr><td>14/06/2020</td><td>Faceit Custom Cup</td><td>5°</td><td>-</td></tr>
+  <tr><td>21/06/2020</td><td>ESL Go4 R6 #174</td><td>2°</td><td>35€</td></tr>
+  <tr><td>28/06/2020</td><td>Nicecactus 3v3 Summer</td><td>3°</td><td>20€</td></tr>
+  <tr><td>05/07/2020</td><td>Streamer Cup by RadeTheKing</td><td>3°</td><td>25€</td></tr>
+  <tr><td>12/07/2020</td><td>Italian Clan War</td><td>5°</td><td>-</td></tr>
+  <tr><td>19/07/2020</td><td>ESL Go4 R6 #176</td><td>1°</td><td>50€</td></tr>
+  <tr><td>26/07/2020</td><td>Nicecactus All Stars</td><td>2°</td><td>40€</td></tr>
+  <tr><td>02/08/2020</td><td>LAN Roma Rainbow Clash</td><td>4°</td><td>Felpa Ufficiale Evento</td></tr>
+  <tr><td>16/08/2020</td><td>Nicecactus 2v2 Agosto</td><td>2°</td><td>30€</td></tr>
+  <tr><td>06/09/2020</td><td>Italian Community Series</td><td>3°</td><td>20€</td></tr>
+  <tr><td>13/09/2020</td><td>LAN Torino Showdown</td><td>2°</td><td>Tastiera Razer Blackwidow</td></tr>
+  <tr><td>20/09/2020</td><td>ESL Go4 R6 #178</td><td>3°</td><td>25€</td></tr>
+  <tr><td>04/10/2020</td><td>LAN Padova Open</td><td>2°</td><td>Tastiera Razer Cynosa</td></tr>
+  <tr><td>11/10/2020</td><td>Nicecactus Top Teams</td><td>4°</td><td>-</td></tr>
+  <tr><td>18/10/2020</td><td>Nicecactus Autumn Cup</td><td>4°</td><td>-</td></tr>
+  <tr><td>25/10/2020</td><td>MacieJay Invitational II</td><td>3°</td><td>20€</td></tr>
+  <tr><td>01/11/2020</td><td>ESL Go4 R6 #180</td><td>1°</td><td>50€</td></tr>
+  <tr><td>08/11/2020</td><td>Faceit Winter Clash</td><td>4°</td><td>-</td></tr>
+  <tr><td>15/11/2020</td><td>LAN Bari Esports Day</td><td>3°</td><td>Mousepad XXL</td></tr>
+  <tr><td>22/11/2020</td><td>Nicecactus November Clash</td><td>2°</td><td>35€</td></tr>
+  <tr><td>29/11/2020</td><td>Streamer Cup Reloaded</td><td>5°</td><td>-</td></tr>
+  <tr><td>06/12/2020</td><td>Nicecactus XMas Cup</td><td>2°</td><td>40€</td></tr>
+</tbody>
+    </table>
+</div>
+<div id="year-2021">
+    <h2>Rainbow Six Siege - 2021</h2>
+    <table class="tournament-table">
+      <thead>
+        <tr><th>Data</th><th>Evento</th><th>Posizione</th><th>Vincita</th></tr>
+      </thead>
+      <tbody id="r6-2021-body">
+        <tr><td>10/01/2021</td><td>ESL Go4 R6 #181</td><td>4°</td><td>-</td></tr>
+  <tr><td>17/01/2021</td><td>Nicecactus Winter Duo</td><td>2°</td><td>30€</td></tr>
+  <tr><td>24/01/2021</td><td>LAN Pisa Community Clash</td><td>3°</td><td>Tshirt + 20€</td></tr>
+  <tr><td>07/02/2021</td><td>ESL Go4 R6 #182</td><td>2°</td><td>35€</td></tr>
+  <tr><td>21/02/2021</td><td>Nicecactus Solo Cup</td><td>5°</td><td>-</td></tr>
+  <tr><td>07/03/2021</td><td>LAN Lecco CW Base Clash</td><td>2°</td><td>Skin esclusiva</td></tr>
+  <tr><td>14/03/2021</td><td>Streamer Showmatch - MacieJay</td><td>4°</td><td>20€</td></tr>
+  <tr><td>21/03/2021</td><td>Nicecactus 1v1 Clash</td><td>3°</td><td>20€</td></tr>
+  <tr><td>28/03/2021</td><td>Faceit Open League</td><td>6°</td><td>-</td></tr>
+  <tr><td>11/04/2021</td><td>LAN Milano Spring Cup</td><td>4°</td><td>Cuffie HyperX</td></tr>
+  <tr><td>18/04/2021</td><td>Nicecactus Weekly</td><td>2°</td><td>30€</td></tr>
+  <tr><td>02/05/2021</td><td>ESL Go4 R6 #183</td><td>1°</td><td>50€</td></tr>
+  <tr><td>09/05/2021</td><td>Italian Tactical Cup</td><td>3°</td><td>20€</td></tr>
+  <tr><td>23/05/2021</td><td>LAN Roma Tactical Clash</td><td>2°</td><td>Felpa + Medaglia</td></tr>
+  <tr><td>06/06/2021</td><td>Nicecactus Open Estiva</td><td>2°</td><td>35€</td></tr>
+  <tr><td>20/06/2021</td><td>MacieJay Invitational III</td><td>5°</td><td>-</td></tr>
+  <tr><td>04/07/2021</td><td>Faceit Duo Showdown</td><td>3°</td><td>25€</td></tr>
+  <tr><td>18/07/2021</td><td>LAN Torino Tactical Arena</td><td>1°</td><td>Tastiera + 50€</td></tr>
+  <tr><td>01/08/2021</td><td>Nicecactus Summer Solo</td><td>3°</td><td>20€</td></tr>
+  <tr><td>12/09/2021</td><td>LAN Napoli R6 Fest</td><td>2°</td><td>Mousepad + 30€</td></tr>
+      </tbody>
+    </table>
+</div>
+<div id="year-2022">
+    <h2>Rainbow Six Siege - 2022</h2>
+    <table class="tournament-table">
+      <thead>
+        <tr><th>Data</th><th>Evento</th><th>Posizione</th><th>Vincita</th></tr>
+      </thead>
+      <tbody id="r6-2022-body">
+        <tr><td>09/01/2022</td><td>Nicecactus Winter Open</td><td>3°</td><td>25€</td></tr>
+  <tr><td>23/01/2022</td><td>Faceit January Clash</td><td>4°</td><td>-</td></tr>
+  <tr><td>06/02/2022</td><td>LAN Padova Elite Cup</td><td>2°</td><td>Tastiera Logitech</td></tr>
+  <tr><td>20/02/2022</td><td>MacieJay Creator Series</td><td>5°</td><td>-</td></tr>
+  <tr><td>06/03/2022</td><td>Nicecactus Spring Cup</td><td>2°</td><td>30€</td></tr>
+  <tr><td>20/03/2022</td><td>LAN Milano Pro Day</td><td>3°</td><td>Cuffie + Medaglia</td></tr>
+  <tr><td>03/04/2022</td><td>Faceit Duel Showdown</td><td>4°</td><td>-</td></tr>
+  <tr><td>24/04/2022</td><td>LAN Bari Domination</td><td>1°</td><td>Coppa + 70€</td></tr>
+  <tr><td>08/05/2022</td><td>Italian Challenge May</td><td>2°</td><td>35€</td></tr>
+  <tr><td>22/05/2022</td><td>Nicecactus Duo Cup</td><td>3°</td><td>25€</td></tr>
+  <tr><td>05/06/2022</td><td>LAN Roma Summer Clash</td><td>2°</td><td>Mouse Razer</td></tr>
+  <tr><td>19/06/2022</td><td>Faceit Tactical Arena</td><td>4°</td><td>-</td></tr>
+  <tr><td>03/07/2022</td><td>Nicecactus Solo Clash</td><td>3°</td><td>20€</td></tr>
+  <tr><td>17/07/2022</td><td>LAN Torino Open</td><td>2°</td><td>Felpa Evento</td></tr>
+  <tr><td>07/08/2022</td><td>Streamer Cup Summer</td><td>5°</td><td>-</td></tr>
+  <tr><td>04/09/2022</td><td>Italian Masters</td><td>3°</td><td>25€</td></tr>
+  <tr><td>18/09/2022</td><td>LAN Lecco Base Clash II</td><td>1°</td><td>Coppa + Headset</td></tr>
+  <tr><td>02/10/2022</td><td>Nicecactus Top Solo</td><td>2°</td><td>30€</td></tr>
+  <tr><td>16/10/2022</td><td>Faceit National Cup</td><td>4°</td><td>-</td></tr>
+  <tr><td>06/11/2022</td><td>LAN Pisa End Season</td><td>3°</td><td>Tastiera + 20€</td></tr>
+      </tbody>
+    </table>
+</div>
+<div id="year-2023">
+    <h2>Rainbow Six Siege - 2023</h2>
+    <table class="tournament-table">
+      <thead>
+        <tr><th>Data</th><th>Evento</th><th>Posizione</th><th>Vincita</th></tr>
+      </thead>
+      <tbody id="r6-2023-body">
+        <tr><td>15/01/2023</td><td>Faceit Warmup Cup</td><td>4°</td><td>-</td></tr>
+        <tr><td>12/02/2023</td><td>Nicecactus 1v1 Clash</td><td>3°</td><td>20€</td></tr>
+        <tr><td>26/02/2023</td><td>LAN Pisa Tactical Night</td><td>2°</td><td>Felpa Team</td></tr>
+        <tr><td>19/03/2023</td><td>Faceit Spring Qualifier</td><td>5°</td><td>-</td></tr>
+        <tr><td>30/04/2023</td><td>Nicecactus Duo League</td><td>4°</td><td>-</td></tr>
+        <tr><td>14/05/2023</td><td>Streamer Cup Finale</td><td>6°</td><td>-</td></tr>
+        <tr><td>11/06/2023</td><td>LAN Lecco Summer Clash</td><td>3°</td><td>Mousepad</td></tr>
+        <tr><td>02/07/2023</td><td>Nicecactus Solo X</td><td>4°</td><td>-</td></tr>
+      </tbody>
+    </table>
+</div>
+<div id="year-2024">
+    <h2>Rainbow Six Siege - 2024</h2>
+    <table class="tournament-table">
+      <thead>
+        <tr><th>Data</th><th>Evento</th><th>Posizione</th><th>Vincita</th></tr>
+      </thead>
+      <tbody id="r6-2024-body">
+        <tr><td>21/01/2024</td><td>Faceit January Duel</td><td>5°</td><td>-</td></tr>
+        <tr><td>10/03/2024</td><td>LAN Milano R6 Mini</td><td>2°</td><td>Felpa Evento</td></tr>
+        <tr><td>14/04/2024</td><td>Nicecactus Spring Clash</td><td>3°</td><td>20€</td></tr>
+        <tr><td>12/05/2024</td><td>Streamer Duo Tournament</td><td>4°</td><td>-</td></tr>
+        <tr><td>16/06/2024</td><td>LAN Pisa Summer</td><td>3°</td><td>Mouse Logitech</td></tr>
+        <tr><td>07/07/2024</td><td>Italian Final Skirmish</td><td>5°</td><td>-</td></tr>
+      </tbody>
+    </table>
+ </div>
+  </div>
+  <script>
+  function toggleMenu() {
+    const menu = document.getElementById('menu');
+    menu.style.display = (menu.style.display === 'flex') ? 'none' : 'flex';
+  }
+
+  function setLanguage(lang) {
+    const elements = document.querySelectorAll('[data-it]');
+    elements.forEach(el => {
+      const text = el.getAttribute(`data-${lang}`);
+      if (text) el.innerText = text;
+    });
+  }
+
+  // ✅ QUESTA FUNZIONE MOSTRA SOLO I TORNEI DELL'ANNO SELEZIONATO
+  function filterByYear() {
+    const selectedYear = document.getElementById('yearSelector').value;
+    const allYears = document.querySelectorAll('#tournament-sections > div');
+
+    allYears.forEach(section => {
+      if (selectedYear === 'all') {
+        section.style.display = 'block';
+      } else {
+        section.style.display = section.id === 'year-' + selectedYear ? 'block' : 'none';
+      }
+    });
+  }
+  // ✅ AL CARICAMENTO MOSTRA TUTTI I TORNEI (O SOLO UNO SE FILTRATO)
+  window.onload = () => {
+    filterByYear();
+  };
+</script>
+</body>
+</html>
