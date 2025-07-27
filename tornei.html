@@ -204,6 +204,30 @@
     from { opacity: 0; transform: translateY(-10px); }
     to { opacity: 1; transform: translateY(0); }
   }
+
+.game-selector {
+  text-align: center;
+  margin: 2rem 0 1rem 0;
+}
+
+.game-selector select {
+  padding: 10px 16px;
+  border-radius: 10px;
+  background-color: var(--secondary-color);
+  color: var(--main-color);
+  border: 2px solid var(--main-color);
+  font-family: var(--font);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.game-selector select:hover {
+  background-color: var(--highlight);
+  color: #fff;
+  border-color: #fff;
+}
+
 </style>
 
 </head>
@@ -215,7 +239,6 @@
       <div class="close-btn" onclick="toggleMenu()">✖</div>
       <a href="ringraziamenti.html">🙏 Ringraziamenti</a>
       <a href="faceit.html">💥 Dati Faceit</a>
-      <a href="tornei.html">🏆 Tutti i tornei</a>
       <a href="giochi.html">🎮 Giochi Competitivi</a>
       <a href="ruoli.html">🎯 I miei ruoli</a>
       <a href="statistiche.html">📊 Statistiche Complete</a>
@@ -231,6 +254,18 @@
   <div class="container">
     <h1>Tutti i Tornei</h1>
 
+<div class="game-selector">
+  <label for="gameSelector">🎮 Seleziona il gioco:</label>
+  <select id="gameSelector" onchange="filterByGame()">
+    <option value="all">Tutti</option>
+    <option value="r6">Rainbow Six</option>
+    <option value="valorant">Valorant</option>
+    <option value="rocketleague">Rocket League</option>
+    <option value="fortnite">Fortnite</option>
+    <option value="clashroyale">Clash Royale</option>
+  </select>
+</div>
+
 <div class="year-selector">
       <label for="yearSelector">📅 Seleziona l'anno:</label>
       <select id="yearSelector" onchange="filterByYear()">
@@ -245,7 +280,8 @@
       </select>
     </div>
 <div id="tournament-sections">
-<div id="year-2018">
+<div id="game-r6" class="game-section">
+<div id="year-2018-r6">
     <h2>Rainbow Six Siege - 2018</h2>
     <table class="tournament-table">
       <thead>
@@ -273,7 +309,7 @@
       </tbody>
     </table>
 </div>
-<div id="year-2019">
+<div id="year-2019-r6">
     <h2>Rainbow Six Siege - 2019</h2>
     <table class="tournament-table">
       <thead>
@@ -334,7 +370,7 @@
       </tbody>
     </table>
 </div>
-<div id="year-2020">
+<div id="year-2020-r6">
     <h2>Rainbow Six Siege - 2020</h2>
     <table class="tournament-table">
       <thead>
@@ -386,7 +422,7 @@
 </tbody>
     </table>
 </div>
-<div id="year-2021">
+<div id="year-2021-r6">
     <h2>Rainbow Six Siege - 2021</h2>
     <table class="tournament-table">
       <thead>
@@ -416,7 +452,7 @@
       </tbody>
     </table>
 </div>
-<div id="year-2022">
+<div id="year-2022-r6">
     <h2>Rainbow Six Siege - 2022</h2>
     <table class="tournament-table">
       <thead>
@@ -446,7 +482,7 @@
       </tbody>
     </table>
 </div>
-<div id="year-2023">
+<div id="year-2023-r6">
     <h2>Rainbow Six Siege - 2023</h2>
     <table class="tournament-table">
       <thead>
@@ -464,7 +500,7 @@
       </tbody>
     </table>
 </div>
-<div id="year-2024">
+<div id="year-2024-r6">
     <h2>Rainbow Six Siege - 2024</h2>
     <table class="tournament-table">
       <thead>
@@ -481,6 +517,84 @@
     </table>
  </div>
   </div>
+<!-- INIZIO SEZIONI ALTRI GIOCHI -->
+<div id="game-valorant" class="game-section" style="display: none;">
+    <div id="year-2020-valorant">
+    <h2>Valorant - 2020</h2>
+    <table class="tournament-table">
+      <thead>
+        <tr><th>Data</th><th>Evento</th><th>Posizione</th><th>Vincita</th></tr>
+      </thead>
+      <tbody id="valorant-2020-body">
+        <tr><td>02/05/2020</td><td>Faceit Valorant Alpha Cup</td><td>4°</td><td>-</td></tr>
+<tr><td>10/05/2020</td><td>Community Beta Brawl</td><td>2°</td><td>30€</td></tr>
+<tr><td>23/05/2020</td><td>LAN Verona Tactical Clash</td><td>3°</td><td>T-shirt + Medaglia</td></tr>
+<tr><td>14/06/2020</td><td>Nicecactus Valorant Duo</td><td>1°</td><td>50€</td></tr>
+<tr><td>28/06/2020</td><td>Faceit Mayhem Invitational</td><td>5°</td><td>-</td></tr>
+<tr><td>12/07/2020</td><td>Streamer Arena - TekNoyd</td><td>Showmatch</td><td>-</td></tr>
+<tr><td>26/07/2020</td><td>LAN Napoli Open Duel</td><td>2°</td><td>Mousepad + 20€</td></tr>
+<tr><td>09/08/2020</td><td>Valorant Community Showdown</td><td>3°</td><td>25€</td></tr>
+<tr><td>20/09/2020</td><td>Nicecactus Fall Blitz</td><td>4°</td><td>-</td></tr>
+<tr><td>11/10/2020</td><td>Faceit Tactical Masters</td><td>2°</td><td>40€</td></tr>
+<tr><td>08/11/2020</td><td>LAN Firenze MiniCup</td><td>5°</td><td>-</td></tr>
+<tr><td>06/12/2020</td><td>Italian Winter Clash</td><td>3°</td><td>30€</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div id="year-2021-valorant">
+    <h2>Valorant - 2021</h2>
+    <table class="tournament-table">
+      <thead>
+        <tr><th>Data</th><th>Evento</th><th>Posizione</th><th>Vincita</th></tr>
+      </thead>
+      <tbody id="valorant-2021-body">
+        <tr><td>17/01/2021</td><td>Nicecactus Winter Rush</td><td>3°</td><td>25€</td></tr>
+<tr><td>31/01/2021</td><td>Faceit Valorant Trial Cup</td><td>2°</td><td>40€</td></tr>
+<tr><td>14/02/2021</td><td>Streamer Clash - Love Edition</td><td>4°</td><td>-</td></tr>
+<tr><td>07/03/2021</td><td>LAN Torino MicroMasters</td><td>5°</td><td>-</td></tr>
+<tr><td>28/03/2021</td><td>Community 5v5 Arena</td><td>1°</td><td>50€</td></tr>
+<tr><td>25/04/2021</td><td>Nicecactus Tactical Clash</td><td>2°</td><td>35€</td></tr>
+<tr><td>13/06/2021</td><td>Faceit Spring Invitational</td><td>4°</td><td>-</td></tr>
+<tr><td>25/07/2021</td><td>LAN Pisa Frag Day</td><td>3°</td><td>T-shirt + Medaglia</td></tr>
+<tr><td>19/09/2021</td><td>Italian Showmatch - Summer Split</td><td>Showmatch</td><td>-</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div id="year-2022-valorant">
+    <h2>Valorant - 2022</h2>
+    <table class="tournament-table">
+      <thead>
+        <tr><th>Data</th><th>Evento</th><th>Posizione</th><th>Vincita</th></tr>
+      </thead>
+      <tbody id="valorant-2022-body">
+        <tr><td>16/01/2022</td><td>Faceit New Year Rush</td><td>3°</td><td>20€</td></tr>
+<tr><td>06/03/2022</td><td>LAN Napoli Valor Skirmish</td><td>4°</td><td>Tshirt Evento</td></tr>
+<tr><td>10/04/2022</td><td>Community Frag Night</td><td>2°</td><td>15€</td></tr>
+<tr><td>15/05/2022</td><td>Nicecactus Light Cup</td><td>3°</td><td>10€</td></tr>
+<tr><td>17/07/2022</td><td>Streamer 3v3 Showmatch</td><td>Fun</td><td>-</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div id="year-2023-valorant">
+    <h2>Valorant - 2023</h2>
+    <table class="tournament-table">
+      <thead>
+        <tr><th>Data</th><th>Evento</th><th>Posizione</th><th>Vincita</th></tr>
+      </thead>
+      <tbody id="valorant-2023-body">
+        <tr><td>22/01/2023</td><td>Nicecactus New Year Rush</td><td>5°</td><td>-</td></tr>
+<tr><td>19/02/2023</td><td>Multigasming Last Cup</td><td>4°</td><td>10€</td></tr>
+<tr><td>26/03/2023</td><td>Faceit Retake Throwdown</td><td>3°</td><td>15€</td></tr>
+<tr><td>16/04/2023</td><td>Addio Valorant - Mix Team</td><td>2°</td><td>Risate</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- RIPETI STRUTTURA PER Rocket League, Clash Royale, Brawl Stars e Clash of Clans -->
+
+<!-- FINE SEZIONI ALTRI GIOCHI -->
+
   <script>
   function toggleMenu() {
     const menu = document.getElementById('menu');
@@ -497,21 +611,43 @@
 
   // ✅ QUESTA FUNZIONE MOSTRA SOLO I TORNEI DELL'ANNO SELEZIONATO
   function filterByYear() {
-    const selectedYear = document.getElementById('yearSelector').value;
-    const allYears = document.querySelectorAll('#tournament-sections > div');
+  const selectedYear = document.getElementById("yearSelector").value;
 
-    allYears.forEach(section => {
-      if (selectedYear === 'all') {
-        section.style.display = 'block';
-      } else {
-        section.style.display = section.id === 'year-' + selectedYear ? 'block' : 'none';
-      }
-    });
-  }
+  // Seleziona solo le sezioni attualmente visibili (il gioco selezionato)
+  const activeGame = document.querySelector('.game-section:not([style*="display: none"])');
+
+  if (!activeGame) return; // Se non c'è nessun gioco attivo, non fare nulla
+
+  const yearSections = activeGame.querySelectorAll('[id^="year-"]');
+
+  yearSections.forEach(section => {
+    const yearId = section.id.split("-")[1]; // estrae solo l'anno (es. "2020")
+    if (selectedYear === "all" || selectedYear === yearId) {
+      section.style.display = "block";
+    } else {
+      section.style.display = "none";
+    }
+  });
+}
+
   // ✅ AL CARICAMENTO MOSTRA TUTTI I TORNEI (O SOLO UNO SE FILTRATO)
   window.onload = () => {
     filterByYear();
   };
 </script>
+<script>
+  function filterByGame() {
+    const selectedGame = document.getElementById("gameSelector").value;
+    const gameSections = ["r6", "valorant", "rocketleague", "fortnite", "clashroyale"];
+
+    gameSections.forEach(game => {
+      const section = document.getElementById(`game-${game}`);
+      if (section) {
+        section.style.display = (selectedGame === "all" || selectedGame === game) ? "block" : "none";
+      }
+    });
+  }
+</script>
+
 </body>
 </html>
