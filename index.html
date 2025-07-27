@@ -23,50 +23,29 @@
     html {
       scroll-behavior: smooth;
     }
-    body {
-      background: url('https://i.ibb.co/Q7tGChf7/c49e571e-b3fb-49f8-8674-e7bbe9be79f9.png') repeat;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      font-family: var(--font);
-      line-height: 1.6;
-    }
+   body {
+  background: url('https://i.ibb.co/Q7tGChf7/c49e571e-b3fb-49f8-8674-e7bbe9be79f9.png') no-repeat center center fixed;
+  background-size: cover;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font);
+  line-height: 1.6;
+}
+
     header {
       background: linear-gradient(to right, rgba(0,0,0,0.8), rgba(30,0,0,0.8)), url('https://wallpapercave.com/wp/wp8825471.jpg') no-repeat center center/cover;
       padding: 8rem 2rem;
       text-align: center;
-      color: white;
       position: relative;
+      animation: fadeInDown 1.2s ease-in-out;
     }
+
     header img {
       max-width: 300px;
       animation: pulse 3s infinite;
       filter: drop-shadow(0 0 10px var(--main-color));
     }
-    #kaneki-mascot {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 80px;
-      transition: transform 0.3s;
-    }
-    #kaneki-mascot:hover {
-      transform: scale(1.1);
-    }
-    #kaneki-tooltip {
-      display: none;
-      position: fixed;
-      bottom: 110px;
-      right: 20px;
-      background: #111;
-      color: white;
-      padding: 10px 14px;
-      border-radius: 6px;
-      font-size: 0.9rem;
-      white-space: nowrap;
-    }
-    #kaneki-mascot:hover + #kaneki-tooltip {
-      display: block;
-    }
+
     nav {
       background-color: var(--secondary-color);
       padding: 1rem;
@@ -77,7 +56,9 @@
       position: sticky;
       top: 0;
       z-index: 1000;
+      box-shadow: 0 3px 10px #000;
     }
+
     nav a {
       color: #bbb;
       text-decoration: none;
@@ -88,10 +69,12 @@
       transition: all 0.3s ease-in-out;
       position: relative;
     }
+
     nav a:hover {
       background-color: var(--highlight);
       color: #000;
     }
+
     nav a::after {
       content: attr(data-tooltip);
       position: absolute;
@@ -108,40 +91,50 @@
       pointer-events: none;
       transition: opacity 0.3s;
     }
+
     nav a:hover::after {
       opacity: 1;
     }
+
     main {
-      max-width: 1200px;
+      max-width: 1000px;
       margin: auto;
       padding: 2rem 1rem;
+      animation: fadeInUp 1.3s ease-in-out;
     }
+
     section {
       background-color: var(--secondary-color);
       margin-bottom: 2rem;
       padding: 2rem;
       border-radius: 10px;
-      box-shadow: 0 0 10px #000;
+      box-shadow: 0 0 15px #000;
     }
+
     h2 {
       color: var(--main-color);
       margin-bottom: 1rem;
       border-bottom: 2px solid var(--main-color);
       padding-bottom: 0.5rem;
-      font-size: 2rem;
+      font-size: 2.2rem;
+      text-shadow: 0 0 6px var(--main-color);
     }
+
     p, li {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
     }
+
     ul {
       padding-left: 1.5rem;
     }
+
     .lang-switch {
       display: flex;
       justify-content: center;
       gap: 1rem;
       padding: 1rem;
     }
+
     .lang-switch button {
       background-color: transparent;
       border: 2px solid var(--main-color);
@@ -152,15 +145,64 @@
       cursor: pointer;
       transition: 0.3s;
     }
+
     .lang-switch button:hover {
       background-color: var(--main-color);
       color: #000;
     }
+
+    #kaneki-mascot {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 80px;
+      transition: transform 0.3s;
+    }
+
+    #kaneki-mascot:hover {
+      transform: scale(1.1);
+    }
+
+    #kaneki-tooltip {
+      display: none;
+      position: fixed;
+      bottom: 110px;
+      right: 20px;
+      background: #111;
+      color: white;
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+
+    #kaneki-mascot:hover + #kaneki-tooltip {
+      display: block;
+    }
+
     footer {
       background-color: #111;
       text-align: center;
       color: #aaa;
       padding: 1.5rem;
+      margin-top: 3rem;
+      font-size: 1rem;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
@@ -168,6 +210,7 @@
   <header>
     <img src="https://i.ibb.co/9kfJWKYk/9b20367e-ed0d-48d7-a5bd-f872bf23f47a.png" alt="GIOXI Logo" />
   </header>
+
   <nav>
     <a href="chi-sono.html" data-it="Chi Sono" data-en="About Me" data-es="Sobre Mí" data-tooltip-it="Scopri la mia storia personale" data-tooltip-en="Discover my personal story" data-tooltip-es="Descubre mi historia personal">Chi Sono</a>
     <a href="faceit.html" data-it="Faceit" data-en="Faceit Stats" data-es="Estadísticas Faceit" data-tooltip-it="Tutti i dati dettagliati di Faceit" data-tooltip-en="All my Faceit stats" data-tooltip-es="Todas mis estadísticas de Faceit">Faceit</a>
@@ -175,43 +218,49 @@
     <a href="giochi.html" data-it="Giochi" data-en="Games" data-es="Juegos" data-tooltip-it="I titoli competitivi in cui ho giocato" data-tooltip-en="Competitive games I've played" data-tooltip-es="Juegos competitivos que he jugado">Giochi</a>
     <a href="ruoli.html" data-it="Ruoli" data-en="Roles" data-es="Roles" data-tooltip-it="I ruoli che ho ricoperto nei vari team" data-tooltip-en="Roles I played in teams" data-tooltip-es="Roles que jugué en equipos">Ruoli</a>
     <a href="statistiche.html" data-it="Statistiche" data-en="Stats" data-es="Estadísticas" data-tooltip-it="Le mie statistiche dettagliate" data-tooltip-en="My full statistics" data-tooltip-es="Todas mis estadísticas">Statistiche</a>
-    <a href="timeline.html" data-it="Timeline" data-en="Timeline" data-es="Cronología" data-tooltip-it="Cronologia della mia carriera competitiva" data-tooltip-en="My competitive timeline" data-tooltip-es="Cronología competitiva">Timeline</a>
     <a href="setup.html" data-it="Setup" data-en="Setup" data-es="Configuración" data-tooltip-it="Il mio setup professionale da gaming" data-tooltip-en="My pro gaming setup" data-tooltip-es="Mi setup profesional">Setup</a>
     <a href="ringraziamenti.html" data-it="Ringraziamenti" data-en="Thanks" data-es="Agradecimientos" data-tooltip-it="Tutti coloro che hanno fatto parte del mio percorso" data-tooltip-en="Everyone part of my journey" data-tooltip-es="Todos los que formaron parte de mi camino">Ringraziamenti</a>
     <a href="contatti.html" data-it="Contatti" data-en="Contacts" data-es="Contactos" data-tooltip-it="Contattami sui miei social" data-tooltip-en="Reach me on socials" data-tooltip-es="Contáctame en redes sociales">Contatti</a>
   </nav>
+
   <div class="lang-switch">
     <button onclick="setLanguage('it')">🇮🇹 Italiano</button>
     <button onclick="setLanguage('en')">🇬🇧 English</button>
     <button onclick="setLanguage('es')">🇪🇸 Español</button>
   </div>
+
   <main id="contenuto">
     <section>
-      <h2 data-it="Benvenuto nel mio portfolio" data-en="Welcome to my portfolio" data-es="Bienvenido a mi portafolio">Benvenuto nel mio portfolio</h2>
-      <p data-it="Clicca su una sezione del menu per esplorare la mia carriera nel gaming competitivo." data-en="Click a menu section to explore my competitive gaming career." data-es="Haz clic en una sección del menú para explorar mi carrera competitiva.">
+      <h2 data-it="Benvenuto nel mio portfolio" data-en="Welcome to my portfolio" data-es="Bienvenido a mi portafolio">
+        Benvenuto nel mio portfolio
+      </h2>
+      <p data-it="Clicca su una sezione del menu per esplorare la mia carriera nel gaming competitivo." 
+         data-en="Click a menu section to explore my competitive gaming career." 
+         data-es="Haz clic en una sección del menú para explorar mi carrera competitiva.">
         Clicca su una sezione del menu per esplorare la mia carriera nel gaming competitivo.
       </p>
     </section>
   </main>
-  <img id="kaneki-mascot" src="https://i.ibb.co/tM1SGSqW/6335cfc9-e7a0-4136-ac28-3f20408f6c6a.png" alt="Kaneki" />
+
+  <img id="kaneki-mascot" src="https://i.ibb.co/tM1SGSqW/6335cfc9-e7a0-4136-ac28-3f20408f6c6a.png" alt="Kaneki">
   <div id="kaneki-tooltip">Sito ispirato all'estetica di Tokyo Ghoul</div>
+
   <footer>
-    <p data-it="Creato da GIOXI | Tutti i diritti riservati © 2025" data-en="Created by GIOXI | All rights reserved © 2025" data-es="Creado por GIOXI | Todos los derechos reservados © 2025">Creato da GIOXI | Tutti i diritti riservati © 2025</p>
+    <p data-it="Creato da GIOXI | Tutti i diritti riservati © 2025" 
+       data-en="Created by GIOXI | All rights reserved © 2025" 
+       data-es="Creado por GIOXI | Todos los derechos reservados © 2025">
+       Creato da GIOXI | Tutti i diritti riservati © 2025
+    </p>
   </footer>
+
   <script>
     function setLanguage(lang) {
-      const languages = ['it', 'en', 'es'];
-      document.querySelectorAll('[data-it]').forEach(el => {
-        const content = el.getAttribute(`data-${lang}`);
-        if (content) {
-          el.textContent = content;
-        }
+      document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+        el.textContent = el.getAttribute('data-' + lang);
       });
       document.querySelectorAll('nav a').forEach(el => {
-        const tooltip = el.getAttribute(`data-tooltip-${lang}`);
-        if (tooltip) {
-          el.setAttribute('data-tooltip', tooltip);
-        }
+        const tooltip = el.getAttribute('data-tooltip-' + lang);
+        if (tooltip) el.setAttribute('data-tooltip', tooltip);
       });
     }
     setLanguage('it');
