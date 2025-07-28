@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Giochi Competitivi | GIOXI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --main-color: #e50914;
+      --bg-color: #0c0c0f;
+      --secondary-color: #1e1e2f;
+      --text-color: #f5f5f5;
+      --highlight: #ff4757;
+      --font: 'Oxanium', cursive;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: var(--font);
+      background: var(--bg-color) url('https://i.ibb.co/Q7tGChf7/c49e571e-b3fb-49f8-8674-e7bbe9be79f9.png') repeat;
+      color: var(--text-color);
+      padding: 2rem;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: rgba(0, 0, 0, 0.85);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .logo {
+      height: 55px;
+      cursor: pointer;
+    }
+    .menu-icon {
+      height: 40px;
+      cursor: pointer;
+    }
+    .menu {
+      position: absolute;
+      top: 70px;
+      right: 20px;
+      background-color: var(--secondary-color);
+      border-radius: 12px;
+      padding: 1rem;
+      display: none;
+      flex-direction: column;
+      box-shadow: 0 0 20px var(--highlight);
+      z-index: 2000;
+      min-width: 260px;
+    }
+    .menu a {
+      text-decoration: none;
+      color: var(--text-color);
+      padding: 0.5rem 0;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+    .menu a:hover {
+      background-color: var(--highlight);
+      color: white;
+      padding-left: 10px;
+      border-radius: 6px;
+    }
+    .close-btn {
+      align-self: flex-end;
+      font-size: 1.5rem;
+      cursor: pointer;
+      margin-bottom: 0.5rem;
+      color: var(--highlight);
+    }
+    .lang-switch {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .lang-switch button {
+      background-color: transparent;
+      color: var(--text-color);
+      border: 2px solid var(--highlight);
+      padding: 0.5rem 1.2rem;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s, color 0.3s, transform 0.3s ease;
+    }
+    .lang-switch button:hover {
+      background-color: var(--highlight);
+      color: white;
+      transform: scale(1.05);
+    }
+    h1 {
+      text-align: center;
+      color: var(--main-color);
+      margin-bottom: 2rem;
+      text-shadow: 0 0 10px var(--main-color);
+      font-size: 2.5rem;
+    }
+    .game-selector {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    .game-selector img {
+      width: 60px;
+      height: 60px;
+      border-radius: 12px;
+      border: 2px solid var(--main-color);
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .game-selector img:hover {
+      transform: scale(1.15);
+      box-shadow: 0 0 12px var(--highlight);
+    }
+    .game-section {
+      display: none;
+      animation: fadeIn 0.6s ease-in-out;
+      background-color: rgba(30, 30, 47, 0.96);
+      padding: 2rem;
+      border-radius: 14px;
+      box-shadow: 0 0 24px var(--highlight);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .game-section.active {
+      display: block;
+    }
+    .game-section h2 {
+      font-size: 1.8rem;
+      color: var(--highlight);
+      margin-bottom: 1rem;
+    }
+    .game-section p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html"><img class="logo" src="https://i.ibb.co/DHZzMwPP/99b7b37d-9c84-4145-8a4e-9b4ea6a69154.png" alt="logo GIOXI"></a>
+    <img class="menu-icon" src="https://i.ibb.co/v4r8NrzY/ef6574e3-290d-4b2c-b12d-4cf70f478395.png" alt="menu" onclick="toggleMenu()">
+    <div class="menu" id="menu">
+      <div class="close-btn" onclick="toggleMenu()">✖</div>
+      <a href="chi-sono.html" data-it="🧠 Chi Sono" data-en="🧠 About Me" data-es="🧠 Sobre Mí">🧠 Chi Sono</a>
+      <a href="ringraziamenti.html" data-it="🙏 Ringraziamenti" data-en="🙏 Thanks" data-es="🙏 Agradecimientos">🙏 Ringraziamenti</a>
+      <a href="tornei.html" data-it="🏆 Tutti i tornei" data-en="🏆 Tournaments" data-es="🏆 Torneos">🏆 Tutti i tornei</a>
+      <a href="giochi.html" data-it="🎮 Giochi Competitivi" data-en="🎮 Competitive Games" data-es="🎮 Juegos competitivos">🎮 Giochi Competitivi</a>
+      <a href="ruoli.html" data-it="🎯 I miei ruoli" data-en="🎯 My Roles" data-es="🎯 Mis Roles">🎯 I miei ruoli</a>
+      <a href="statistiche.html" data-it="📊 Statistiche Complete" data-en="📊 Full Stats" data-es="📊 Estadísticas">📊 Statistiche Complete</a>
+      <a href="timeline.html" data-it="📅 Cronologia" data-en="📅 Timeline" data-es="📅 Cronología">📅 Cronologia</a>
+      <a href="setup.html" data-it="🛠 Setup Pro" data-en="🛠 Pro Setup" data-es="🛠 Configuración">🛠 Setup Pro</a>
+    </div>
+  </header>
+  <div class="lang-switch">
+    <button onclick="setLanguage('it')">🇮🇹 Italiano</button>
+    <button onclick="setLanguage('en')">🇬🇧 English</button>
+    <button onclick="setLanguage('es')">🇪🇸 Español</button>
+  </div>
+
+  <h1>Giochi Competitivi</h1>
+  <div class="game-selector">
+    <img src="https://i.ibb.co/svGmKqXX/E1063325-3.jpg" alt="Rainbow Six Siege" onclick="showGame('r6')">
+    <img src="https://i.ibb.co/svBX5DGB/images-steamusercontent.jpg" alt="Valorant" onclick="showGame('valorant')">
+    <img src="https://i.ibb.co/bgjHzWdf/v-MT43-JO2-Pr5-JZBP1j-Sjw6-Vh-Qg-Oe-C5m-XZ.jpg" alt="Rocket League" onclick="showGame('rocket')">
+    <img src="https://i.ibb.co/KxThxNWn/high-resolution-clash-royale-png-icon-21.png" alt="Clash Royale" onclick="showGame('clash')">
+    <img src="https://i.ibb.co/xK1zgfLZ/Fortnite-F-lettermark-logo.png" alt="Fortnite" onclick="showGame('fortnite')">
+  </div>
+
+  <div id="r6" class="game-section active">
+    <h2>Rainbow Six Siege</h2>
+    <p>FPS tattico competitivo dove la strategia è tutto. Ho iniziato nel 2020 con più di 3 team diversi, ricoprendo ruoli da support a entry. Conosco ogni mappa e operatori in profondità.</p>
+  </div>
+
+  <div id="valorant" class="game-section">
+    <h2>Valorant</h2>
+    <p>Sparatutto tattico con agenti unici. Ho cominciato nel 2021, partecipato a diversi scrim e tornei, specializzandomi in agenti come Reyna e Omen. Ruolo preferito: entry-fragger.</p>
+  </div>
+
+  <div id="rocket" class="game-section">
+    <h2>Rocket League</h2>
+    <p>Gioco sportivo con auto e pallone. Gioco dal 2019 con esperienza in team semi-competitivi. Posizione preferita: difensore volante e counter player.</p>
+  </div>
+
+  <div id="clash" class="game-section">
+    <h2>Clash Royale</h2>
+    <p>Gioco di strategia PvP su mobile. Presente fin dal 2018, parte di vari clan competitivi, con tornei regionali vinti. Ruolo: deck builder e shot caller.</p>
+  </div>
+
+  <div id="fortnite" class="game-section">
+    <h2>Fortnite</h2>
+    <p>Battle Royale iconico. Ho iniziato nel 2018 su console, poi PC. Specializzato in build fight, high-ground retake e tornei 1v1. Giocato anche in duo e trio.</p>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('menu');
+      menu.style.display = (menu.style.display === 'flex') ? 'none' : 'flex';
+    }
+
+    function showGame(id) {
+      const sections = document.querySelectorAll('.game-section');
+      sections.forEach(section => section.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+
+    function setLanguage(lang) {
+      const translations = {
+        r6: {
+          it: "FPS tattico competitivo dove la strategia è tutto. Ho iniziato nel 2020 con più di 3 team diversi, ricoprendo ruoli da support a entry.",
+          en: "Tactical FPS where strategy matters. I started in 2020 with more than 3 teams, playing roles from support to entry.",
+          es: "FPS táctico donde la estrategia lo es todo. Empecé en 2020 con más de 3 equipos, desempeñando roles de support a entry."
+        },
+        valorant: {
+          it: "Sparatutto tattico con agenti unici. Ho cominciato nel 2021, partecipato a diversi scrim e tornei.",
+          en: "Tactical shooter with unique agents. Started in 2021, joined scrims and tournaments.",
+          es: "Shooter táctico con agentes únicos. Comencé en 2021, participé en scrims y torneos."
+        },
+        rocket: {
+          it: "Gioco sportivo con auto e pallone. Gioco dal 2019 con esperienza in team semi-competitivi.",
+          en: "Car-soccer video game. Playing since 2019 in semi-competitive teams.",
+          es: "Juego deportivo de coches y balón. Juego desde 2019 en equipos semi-competitivos."
+        },
+        clash: {
+          it: "Gioco di strategia PvP su mobile. Presente fin dal 2018, parte di vari clan competitivi.",
+          en: "PvP strategy game on mobile. Active since 2018 in several competitive clans.",
+          es: "Juego de estrategia PvP en móvil. Jugando desde 2018 en varios clanes competitivos."
+        },
+        fortnite: {
+          it: "Battle Royale iconico. Ho iniziato nel 2018 su console, poi PC.",
+          en: "Iconic Battle Royale. Started in 2018 on console, then PC.",
+          es: "Battle Royale icónico. Comencé en 2018 en consola, luego en PC."
+        }
+      };
+
+      for (const key in translations) {
+        document.querySelector(`#${key} p`).innerText = translations[key][lang];
+      }
+
+      const menuLinks = document.querySelectorAll('.menu a');
+      menuLinks.forEach(link => {
+        if (link.dataset[lang]) {
+          link.innerText = link.dataset[lang];
+        }
+      });
+    }
+  </script>
+</body>
+</html>
