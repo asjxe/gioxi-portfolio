@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contatti | GIOXI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --main-color: #e50914;
+      --secondary-color: #1e1e2f;
+      --bg-color: #0c0c0f;
+      --text-color: #f5f5f5;
+      --highlight: #ff4757;
+      --font: 'Oxanium', cursive;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg-color) url('https://i.ibb.co/Q7tGChf7/c49e571e-b3fb-49f8-8674-e7bbe9be79f9.png') repeat;
+      color: var(--text-color);
+      overflow-x: hidden;
+      animation: fadeInBody 1s ease-in;
+    }
+
+    @keyframes fadeInBody {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: rgba(0, 0, 0, 0.85);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      animation: slideDown 0.6s ease-out;
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-100%); }
+      to { transform: translateY(0); }
+    }
+
+    .logo {
+      height: 55px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.08) rotate(-2deg);
+    }
+
+    .menu-icon {
+      height: 40px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .menu-icon:hover {
+      transform: scale(1.15);
+    }
+
+    .menu {
+      position: absolute;
+      top: 70px;
+      right: 20px;
+      background-color: var(--secondary-color);
+      border-radius: 12px;
+      padding: 1rem;
+      display: none;
+      flex-direction: column;
+      box-shadow: 0 0 20px var(--highlight);
+      z-index: 2000;
+      min-width: 260px;
+      animation: fadeInMenu 0.3s ease-in-out;
+    }
+
+    .menu a {
+      text-decoration: none;
+      color: var(--text-color);
+      padding: 0.5rem 0;
+      font-weight: bold;
+      font-size: 1.1rem;
+      transition: background 0.3s, padding-left 0.3s;
+    }
+
+    .menu a:hover {
+      background-color: var(--highlight);
+      color: white;
+      padding-left: 10px;
+      border-radius: 6px;
+    }
+
+    .close-btn {
+      align-self: flex-end;
+      font-size: 1.5rem;
+      cursor: pointer;
+      margin-bottom: 0.5rem;
+      color: var(--highlight);
+    }
+
+    .lang-switch {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .lang-switch button {
+      background-color: transparent;
+      color: var(--text-color);
+      border: 2px solid var(--highlight);
+      padding: 0.5rem 1.2rem;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s, color 0.3s, transform 0.3s ease;
+    }
+
+    .lang-switch button:hover {
+      background-color: var(--highlight);
+      color: white;
+      transform: scale(1.05);
+    }
+
+    main {
+      max-width: 900px;
+      margin: 3rem auto;
+      padding: 2.5rem;
+      background: rgba(25, 25, 40, 0.96);
+      border-radius: 20px;
+      box-shadow: 0 0 28px var(--main-color);
+      animation: fadeInContent 1s ease;
+    }
+
+    @keyframes fadeInContent {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    main h1 {
+      text-align: center;
+      color: var(--main-color);
+      margin-bottom: 2rem;
+      font-size: 2.2rem;
+      text-shadow: 0 0 10px var(--main-color);
+    }
+
+    section {
+      margin-bottom: 2.5rem;
+      animation: fadeInSection 0.8s ease-in-out;
+    }
+
+    section h2 {
+      color: var(--highlight);
+      margin-bottom: 0.6rem;
+      font-size: 1.6rem;
+    }
+
+    section p {
+      line-height: 1.8;
+      font-size: 1.15rem;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2.5rem;
+      animation: fadeInIcons 1s ease;
+    }
+
+    @keyframes fadeInIcons {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .social-icons img {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: 2px solid var(--main-color);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .social-icons img:hover {
+      transform: scale(1.2);
+      box-shadow: 0 0 12px var(--highlight);
+    }
+
+    #kaneki-mascot {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 70px;
+      transition: transform 0.3s ease;
+    }
+
+    #kaneki-mascot:hover {
+      transform: scale(1.1);
+    }
+
+    #kaneki-tooltip {
+      display: none;
+      position: fixed;
+      bottom: 100px;
+      right: 20px;
+      background: #111;
+      color: white;
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+    }
+
+    #kaneki-mascot:hover + #kaneki-tooltip {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html"><img class="logo" src="https://i.ibb.co/DHZzMwPP/99b7b37d-9c84-4145-8a4e-9b4ea6a69154.png" alt="logo GIOXI"></a>
+    <img class="menu-icon" src="https://i.ibb.co/v4r8NrzY/ef6574e3-290d-4b2c-b12d-4cf70f478395.png" alt="menu" onclick="toggleMenu()">
+    <div class="menu" id="menu">
+      <div class="close-btn" onclick="toggleMenu()">✖</div>
+      <a href="chi-sono.html">🧠 Chi Sono</a>
+      <a href="ringraziamenti.html">🙏 Ringraziamenti</a>
+      <a href="tornei.html">🏆 Tutti i tornei</a>
+      <a href="giochi.html">🎮 Giochi Competitivi</a>
+      <a href="ruoli.html">🎯 I miei ruoli</a>
+      <a href="statistiche.html">📊 Statistiche Complete</a>
+      <a href="timeline.html">📅 Cronologia</a>
+      <a href="setup.html">🛠 Setup Pro</a>
+    </div>
+  </header>
+
+  <div class="lang-switch">
+    <button onclick="setLanguage('it')">🇮🇹 Italiano</button>
+    <button onclick="setLanguage('en')">🇬🇧 English</button>
+    <button onclick="setLanguage('es')">🇪🇸 Español</button>
+  </div>
+
+  <main>
+    <h1 id="contact-title">Contattami sui Social</h1>
+    <section>
+      <h2 id="instagram-title">📸 Instagram</h2>
+      <p id="instagram-text">Seguimi sul mio profilo personale per rimanere aggiornato sulla mia vita e i miei progetti.</p>
+    </section>
+    <section>
+      <h2 id="email-title">📩 Email</h2>
+      <p id="email-text">Per collaborazioni, sponsorizzazioni o proposte professionali, scrivimi a <strong>spxctrefld@gmail.com</strong></p>
+    </section>
+    <section>
+      <h2 id="discord-title">🎮 Discord</h2>
+      <p id="discord-text">Se vuoi giocare con me o entrare nel mio server, scrivimi su Discord: <strong>gioxii__</strong> (accetto solo richieste selezionate).</p>
+    </section>
+    <div class="social-icons">
+      <a href="mailto:spxctrefld@gmail.com" target="_blank"><img src="https://i.ibb.co/qLTXqYgp/08481768-b03e-4f7c-b452-8673df60a62a.png" alt="Gmail"></a>
+      <a href="https://discord.com/users/gioxii__" target="_blank"><img src="https://i.ibb.co/rKMnHzxz/b8f39d7d-b276-4ae1-8e15-f9934398ddfd.png" alt="Discord"></a>
+      <a href="https://www.instagram.com/lele.marchesini" target="_blank"><img src="https://i.ibb.co/Y77CJ0HR/ad7f797b-724f-4c7d-a785-504758fde7c4.png" alt="Instagram"></a>
+    </div>
+  </main>
+
+  <img id="kaneki-mascot" src="https://i.ibb.co/tM1SGSqW/6335cfc9-e7a0-4136-ac28-3f20408f6c6a.png" alt="Kaneki" />
+  <div id="kaneki-tooltip">Sito ispirato a Tokyo Ghoul</div>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('menu');
+      menu.style.display = (menu.style.display === 'flex') ? 'none' : 'flex';
+    }
+
+    const translations = {
+      it: {
+        'contact-title': 'Contattami sui Social',
+        'instagram-title': '📸 Instagram',
+        'instagram-text': 'Seguimi sul mio profilo personale per rimanere aggiornato sulla mia vita e i miei progetti.',
+        'email-title': '📩 Email',
+        'email-text': 'Per collaborazioni, sponsorizzazioni o proposte professionali, scrivimi a <strong>spxctrefld@gmail.com</strong>',
+        'discord-title': '🎮 Discord',
+        'discord-text': 'Se vuoi giocare con me o entrare nel mio server, scrivimi su Discord: <strong>gioxii__</strong> (accetto solo richieste selezionate).'
+      },
+      en: {
+        'contact-title': 'Contact Me on Socials',
+        'instagram-title': '📸 Instagram',
+        'instagram-text': 'Follow my personal profile to stay updated on my life and projects.',
+        'email-title': '📩 Email',
+        'email-text': 'For collaborations, sponsorships or business proposals, write to me at <strong>spxctrefld@gmail.com</strong>',
+        'discord-title': '🎮 Discord',
+        'discord-text': 'If you want to play with me or join my server, message me on Discord: <strong>gioxii__</strong> (I only accept selected requests).'
+      },
+      es: {
+        'contact-title': 'Contáctame en Redes Sociales',
+        'instagram-title': '📸 Instagram',
+        'instagram-text': 'Sígueme en mi perfil personal para estar al tanto de mi vida y proyectos.',
+        'email-title': '📩 Email',
+        'email-text': 'Para colaboraciones, patrocinios o propuestas profesionales, escríbeme a <strong>spxctrefld@gmail.com</strong>',
+        'discord-title': '🎮 Discord',
+        'discord-text': 'Si quieres jugar conmigo o unirte a mi servidor, escríbeme en Discord: <strong>gioxii__</strong> (solo acepto solicitudes seleccionadas).'
+      }
+    };
+
+    function setLanguage(lang) {
+      const texts = translations[lang];
+      for (let id in texts) {
+        document.getElementById(id).innerHTML = texts[id];
+      }
+    }
+  </script>
+</body>
+</html>
