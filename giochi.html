@@ -126,16 +126,21 @@
     }
     .game-section {
       display: none;
-      animation: fadeIn 0.6s ease-in-out;
+      animation: fadeOut 0.4s ease-in-out;
       background-color: rgba(30, 30, 47, 0.96);
       padding: 2rem;
       border-radius: 14px;
       box-shadow: 0 0 24px var(--highlight);
       max-width: 900px;
       margin: 0 auto;
+      opacity: 0;
+      transform: translateX(-30px);
+      transition: all 0.5s ease;
     }
     .game-section.active {
       display: block;
+      opacity: 1;
+      transform: translateX(0);
     }
     .game-section h2 {
       font-size: 1.8rem;
@@ -146,16 +151,6 @@
       font-size: 1.1rem;
       line-height: 1.8;
       margin-bottom: 1rem;
-    }
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
     }
   </style>
 </head>
@@ -171,7 +166,6 @@
       <a href="giochi.html" data-it="🎮 Giochi Competitivi" data-en="🎮 Competitive Games" data-es="🎮 Juegos competitivos">🎮 Giochi Competitivi</a>
       <a href="ruoli.html" data-it="🎯 I miei ruoli" data-en="🎯 My Roles" data-es="🎯 Mis Roles">🎯 I miei ruoli</a>
       <a href="statistiche.html" data-it="📊 Statistiche Complete" data-en="📊 Full Stats" data-es="📊 Estadísticas">📊 Statistiche Complete</a>
-      <a href="timeline.html" data-it="📅 Cronologia" data-en="📅 Timeline" data-es="📅 Cronología">📅 Cronologia</a>
       <a href="setup.html" data-it="🛠 Setup Pro" data-en="🛠 Pro Setup" data-es="🛠 Configuración">🛠 Setup Pro</a>
     </div>
   </header>
@@ -181,7 +175,8 @@
     <button onclick="setLanguage('es')">🇪🇸 Español</button>
   </div>
 
-  <h1>Giochi Competitivi</h1>
+  <h1 id="main-title" data-it="Giochi Competitivi" data-en="Competitive Games" data-es="Juegos Competitivos">Giochi Competitivi</h1>
+
   <div class="game-selector">
     <img src="https://i.ibb.co/svGmKqXX/E1063325-3.jpg" alt="Rainbow Six Siege" onclick="showGame('r6')">
     <img src="https://i.ibb.co/svBX5DGB/images-steamusercontent.jpg" alt="Valorant" onclick="showGame('valorant')">
@@ -224,11 +219,18 @@
     function showGame(id) {
       const sections = document.querySelectorAll('.game-section');
       sections.forEach(section => section.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
+      const selected = document.getElementById(id);
+      selected.classList.add('active');
+      selected.scrollIntoView({ behavior: 'smooth' });
     }
 
     function setLanguage(lang) {
-      const translations = {
+      const translations = document.querySelectorAll('[data-it]');
+      translations.forEach(el => {
+        el.textContent = el.getAttribute(`data-${lang}`);
+      });
+
+      const gameData = {
         r6: {
           it: "FPS tattico competitivo dove la strategia è tutto. Ho iniziato nel 2020 con più di 3 team diversi, ricoprendo ruoli da support a entry.",
           en: "Tactical FPS where strategy matters. I started in 2020 with more than 3 teams, playing roles from support to entry.",
@@ -256,16 +258,9 @@
         }
       };
 
-      for (const key in translations) {
-        document.querySelector(`#${key} p`).innerText = translations[key][lang];
+      for (const key in gameData) {
+        document.querySelector(`#${key} p`).innerText = gameData[key][lang];
       }
-
-      const menuLinks = document.querySelectorAll('.menu a');
-      menuLinks.forEach(link => {
-        if (link.dataset[lang]) {
-          link.innerText = link.dataset[lang];
-        }
-      });
     }
   </script>
 </body>
