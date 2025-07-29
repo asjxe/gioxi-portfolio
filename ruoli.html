@@ -56,6 +56,9 @@
       z-index: 2000;
       min-width: 260px;
     }
+    .menu.show {
+      display: flex;
+    }
     .menu a {
       text-decoration: none;
       color: var(--text-color);
@@ -167,9 +170,9 @@
 </head>
 <body>
   <header>
-    <img class="logo" src="https://i.ibb.co/Z17chK36/Rocket-League-Emblem.png" alt="GIOXI Logo">
-    <img class="menu-icon" src="https://i.ibb.co/v4r8NrzY/ef6574e3-290d-4b2c-b12d-4cf70f478395.png" alt="menu" onclick="document.querySelector('.menu').classList.toggle('show')">
-    <div class="menu">
+    <a href="index.html"><img class="logo" src="https://i.ibb.co/DHZzMwPP/99b7b37d-9c84-4145-8a4e-9b4ea6a69154.png" alt="GIOXI Logo"></a>
+    <img class="menu-icon" src="https://i.ibb.co/v4r8NrzY/ef6574e3-290d-4b2c-b12d-4cf70f478395.png" alt="menu" onclick="toggleMenu()">
+    <div class="menu" id="menu">
       <div class="close-btn" onclick="toggleMenu()">✖</div>
       <a href="index.html">🏠 Home</a>
       <a href="chi-sono.html">🧠 Chi Sono</a>
@@ -182,26 +185,13 @@
     </div>
   </header>
 
-  <h1 id="roles-title" data-it="🎯 I miei ruoli" data-en="🎯 My Roles" data-es="🎯 Mis Roles">🎯 I miei ruoli</h1>
-
-  <div class="role-selector">
-    <img src="https://i.ibb.co/svGmKqXX/E1063325-3.jpg" alt="R6" onclick="showRoles('r6')">
-    <img src="https://i.ibb.co/svBX5DGB/images-steamusercontent.jpg" alt="Valorant" onclick="showRoles('valorant')">
-    <img src="https://i.ibb.co/bgjHzWdf/v-MT43-JO2-Pr5-JZBP1j-Sjw6-Vh-Qg-Oe-C5m-XZ.jpg" alt="Rocket League" onclick="showRoles('rocket')">
-    <img src="https://i.ibb.co/KxThxNWn/high-resolution-clash-royale-png-icon-21.png" alt="Clash Royale" onclick="showRoles('clash')">
-    <img src="https://i.ibb.co/xK1zgfLZ/Fortnite-F-lettermark-logo.png" alt="Fortnite" onclick="showRoles('fortnite')">
-  </div>
   <script>
-    function showRoles(id) {
-      document.querySelectorAll('.role-section').forEach(section => {
-        section.classList.remove('active');
-      });
-      document.getElementById(id).classList.add('active');
-      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    function toggleMenu() {
+      const menu = document.getElementById('menu');
+      menu.classList.toggle('show');
     }
   </script>
 </body>
-  <!-- ... tutto il contenuto HTML precedente rimane invariato fino a ... -->
   <div id="r6" class="role-section active">
     <div class="role-card">
       <h2>Entry Fragger</h2>
