@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Statistiche | GIOXI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --main-color: #e50914;
+      --bg-color: #0c0c0f;
+      --secondary-color: #1e1e2f;
+      --text-color: #f5f5f5;
+      --highlight: #ff4757;
+      --font: 'Oxanium', cursive;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: var(--font);
+      background: var(--bg-color) url('https://i.ibb.co/Q7tGChf7/c49e571e-b3fb-49f8-8674-e7bbe9be79f9.png') repeat;
+      color: var(--text-color);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: rgba(0, 0, 0, 0.85);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .logo {
+      height: 55px;
+      cursor: pointer;
+    }
+    .lang-switch {
+      display: flex;
+      gap: 1rem;
+    }
+    .lang-switch button {
+      background: transparent;
+      color: var(--text-color);
+      border: 2px solid var(--highlight);
+      padding: 0.5rem 1.2rem;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .lang-switch button:hover {
+      background: var(--highlight);
+      color: white;
+      transform: scale(1.05);
+    }
+    .lang-switch button.active {
+      background: var(--highlight);
+      color: white;
+    }
+    h1 {
+      text-align: center;
+      color: var(--main-color);
+      margin: 2rem 0;
+      text-shadow: 0 0 10px var(--main-color);
+      font-size: 2.5rem;
+    }
+    select {
+      background-color: var(--secondary-color);
+      color: var(--text-color);
+      border: 2px solid var(--highlight);
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      margin: 0 auto 2rem;
+      display: block;
+    }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto 2rem;
+      padding: 0 2rem;
+    }
+    .stat-section {
+      background-color: rgba(30, 30, 47, 0.96);
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 0 20px var(--highlight);
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .stat-section:hover {
+      transform: scale(1.02);
+      opacity: 0.95;
+    }
+    .stat-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .stat-header span {
+      font-size: 1.8rem;
+    }
+    .stat-header h2 {
+      color: var(--highlight);
+      font-size: 1.6rem;
+    }
+    ul {
+      list-style-type: square;
+      padding-left: 1.2rem;
+    }
+    li {
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html"><img src="https://i.ibb.co/9k7c4ymm/99b7b37d-9c84-4145-8a4e-9b4ea6a69154.png" alt="Logo GIOXI" class="logo"></a>
+    <div class="lang-switch">
+      <button onclick="setLanguage('it')" id="btn-it">🇮🇹 IT</button>
+      <button onclick="setLanguage('en')" id="btn-en">🇬🇧 EN</button>
+      <button onclick="setLanguage('es')" id="btn-es">🇪🇸 ES</button>
+    </div>
+  </header>
+
+  <h1 data-it="📊 Statistiche Competitive" data-en="📊 Competitive Stats" data-es="📊 Estadísticas Competitivas">📊 Statistiche Competitive</h1>
+
+  <select id="gameSelector" onchange="filterStats()">
+    <option value="all" data-it="🎮 Tutti i Giochi" data-en="🎮 All Games" data-es="🎮 Todos los Juegos">🎮 Tutti i Giochi</option>
+    <option value="Rainbow Six Siege" data-it="🔫 Rainbow Six Siege" data-en="🔫 Rainbow Six Siege" data-es="🔫 Rainbow Six Siege">🔫 Rainbow Six Siege</option>
+    <option value="Clash Royale" data-it="⚔️ Clash Royale" data-en="⚔️ Clash Royale" data-es="⚔️ Clash Royale">⚔️ Clash Royale</option>
+    <option value="Rocket League" data-it="🚗 Rocket League" data-en="🚗 Rocket League" data-es="🚗 Rocket League">🚗 Rocket League</option>
+    <option value="Valorant" data-it="💣 Valorant" data-en="💣 Valorant" data-es="💣 Valorant">💣 Valorant</option>
+  </select>
+
+  <div class="stat-grid" id="statsContainer"></div>
+
+  <script>
+    const statsData = [ {
+        logo: '🔫',
+        title: 'Rainbow Six Siege',
+        entries: {
+          it: [
+            'Top 19 Champion al mondo',
+            '4° in Italia',
+            '15 LAN disputate: Milano, Roma, Bari, Torino, Padova, Pisa, Lecco, Napoli...',
+            '113 tornei totali: 64 ESL (10 vinti), 32 Nicecactus (6 vinti), 17 altri (1° in LAN Torino e Bari)',
+            'Oltre 3500 ore di gioco',
+            'Ruoli: Entry Fragger, Support, IGL'
+          ],
+          en: [
+            'Top 19 Champion worldwide',
+            '4th in Italy',
+            '15 LAN events: Milan, Rome, Bari, Turin, Padua, Pisa, Lecco, Naples...',
+            '113 total tournaments: 64 ESL (10 wins), 32 Nicecactus (6 wins), 17 others (LAN Torino & Bari 1st)',
+            'Over 3500 gameplay hours',
+            'Roles: Entry Fragger, Support, IGL'
+          ],
+          es: [
+            'Top 19 Champion mundial',
+            '4º en Italia',
+            '15 eventos LAN: Milán, Roma, Bari, Turín, Padua, Pisa, Lecco, Nápoles...',
+            '113 torneos totales: 64 ESL (10 ganados), 32 Nicecactus (6 ganados), 17 otros (1° en LAN Torino y Bari)',
+            'Más de 3500 horas de juego',
+            'Roles: Entry Fragger, Support, IGL'
+          ]
+        }
+      },
+      {
+        logo: '💣',
+        title: 'Valorant',
+        entries: {
+          it: [
+            'Rank massimo: Immortal II (Top 41 Italia)',
+            'Oltre 1400 ore di gioco',
+            '30 tornei: 8 Nicecactus (1 vinto), 10 Faceit (1 vinto), 6 LAN fisiche',
+            'Main agent: Jett – Stile aggressivo, flanker rapido',
+            'Ruoli: Duelist, Initiator, Controller'
+          ],
+          en: [
+            'Highest rank: Immortal II (Top 41 Italy)',
+            'Over 1400 hours played',
+            '30 tournaments: 8 Nicecactus (1 win), 10 Faceit (1 win), 6 physical LANs',
+            'Main agent: Jett – Aggressive playstyle, quick flanker',
+            'Roles: Duelist, Initiator, Controller'
+          ],
+          es: [
+            'Rango más alto: Immortal II (Top 41 Italia)',
+            'Más de 1400 horas de juego',
+            '30 torneos: 8 Nicecactus (1 ganado), 10 Faceit (1 ganado), 6 LAN físicas',
+            'Agente principal: Jett – Estilo agresivo, flanqueador veloz',
+            'Roles: Duelist, Initiator, Controller'
+          ]
+        }
+      },
+      {
+        logo: '🚗',
+        title: 'Rocket League',
+        entries: {
+          it: [
+            'Rank: GCII (2v2), GCIII (3v3)',
+            'Top 372 Italia',
+            '9 tornei: 2 LAN, 5 Nicecactus/Faceit (1 vinto)',
+            'Oltre 1200 ore di gioco',
+            'Macchina: Octane + Decal Interstellar'
+          ],
+          en: [
+            'Rank: GCII (2v2), GCIII (3v3)',
+            'Top 372 Italy',
+            '9 tournaments: 2 LAN, 5 Nicecactus/Faceit (1 win)',
+            'Over 1200 gameplay hours',
+            'Main car: Octane + Interstellar decal'
+          ],
+          es: [
+            'Rango: GCII (2v2), GCIII (3v3)',
+            'Top 372 Italia',
+            '9 torneos: 2 LAN, 5 Nicecactus/Faceit (1 ganado)',
+            'Más de 1200 horas de juego',
+            'Coche principal: Octane + Interstellar'
+          ]
+        }
+      },
+      {
+        logo: '⚔️',
+        title: 'Clash Royale',
+        entries: {
+          it: [
+            'Top 200 globale',
+            'Trofei massimi: 3000+',
+            '6 tornei: 4 Faceit/ESL, 2 community (1 vinto)',
+            'Deck: 2.8 Elixir Hog Cycle'
+          ],
+          en: [
+            'Top 200 worldwide',
+            'Max trophies: 3000+',
+            '6 tournaments: 4 Faceit/ESL, 2 community (1 win)',
+            'Deck: 2.8 Elixir Hog Cycle'
+          ],
+          es: [
+            'Top 200 global',
+            'Trofeos máximos: 3000+',
+            '6 torneos: 4 Faceit/ESL, 2 comunidad (1 ganado)',
+            'Mazo: 2.8 Elixir Hog Cycle'
+          ]
+        }
+      }]; // usa i tuoi dati
+
+    function setLanguage(lang) {
+      document.querySelectorAll('.lang-switch button').forEach(btn => btn.classList.remove('active'));
+      document.getElementById('btn-' + lang).classList.add('active');
+      document.querySelectorAll('[data-it], [data-en], [data-es]').forEach(el => {
+        if (el.dataset[lang]) {
+          el.textContent = el.dataset[lang];
+        }
+      });
+      filterStats();
+    }
+
+    function filterStats() {
+      const container = document.getElementById('statsContainer');
+      const selectedGame = document.getElementById('gameSelector').value;
+      const lang = document.querySelector('.lang-switch button.active')?.id.replace('btn-', '') || 'it';
+
+      container.innerHTML = '';
+      statsData.forEach(stat => {
+        if (selectedGame === 'all' || stat.title === selectedGame) {
+          const section = document.createElement('div');
+          section.className = 'stat-section';
+
+          const header = document.createElement('div');
+          header.className = 'stat-header';
+          header.innerHTML = `<span>${stat.logo}</span><h2>${stat.title}</h2>`;
+
+          const ul = document.createElement('ul');
+          stat.entries[lang].forEach(entry => {
+            const li = document.createElement('li');
+            li.textContent = entry;
+            ul.appendChild(li);
+          });
+
+          section.appendChild(header);
+          section.appendChild(ul);
+          container.appendChild(section);
+        }
+      });
+    }
+
+    setLanguage('it');
+  </script>
+</body>
+</html>
