@@ -229,9 +229,7 @@
 
     function setLanguage(lang) {
       document.querySelectorAll('[data-it]').forEach(el => {
-        if (el.dataset[lang]) {
-          el.textContent = el.dataset[lang];
-        }
+        el.textContent = el.dataset[lang];
       });
     }
 
