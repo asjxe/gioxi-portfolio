@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ruoli | GIOXI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --main-color: #e50914;
+      --bg-color: #0c0c0f;
+      --secondary-color: #1e1e2f;
+      --text-color: #f5f5f5;
+      --highlight: #ff4757;
+      --font: 'Oxanium', cursive;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: var(--font);
+      background: var(--bg-color) url('https://i.ibb.co/Q7tGChf7/c49e571e-b3fb-49f8-8674-e7bbe9be79f9.png') repeat;
+      color: var(--text-color);
+      padding: 2rem;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: rgba(0, 0, 0, 0.85);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .logo {
+      height: 55px;
+      cursor: pointer;
+    }
+    .menu-icon {
+      height: 40px;
+      cursor: pointer;
+    }
+    .menu {
+      position: absolute;
+      top: 70px;
+      right: 20px;
+      background-color: var(--secondary-color);
+      border-radius: 12px;
+      padding: 1rem;
+      display: none;
+      flex-direction: column;
+      box-shadow: 0 0 20px var(--highlight);
+      z-index: 2000;
+      min-width: 260px;
+    }
+    .menu a {
+      text-decoration: none;
+      color: var(--text-color);
+      padding: 0.5rem 0;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+    .menu a:hover {
+      background-color: var(--highlight);
+      color: white;
+      padding-left: 10px;
+      border-radius: 6px;
+    }
+    .close-btn {
+      align-self: flex-end;
+      font-size: 1.5rem;
+      cursor: pointer;
+      margin-bottom: 0.5rem;
+      color: var(--highlight);
+    }
+    .lang-switch {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .lang-switch button {
+      background-color: transparent;
+      color: var(--text-color);
+      border: 2px solid var(--highlight);
+      padding: 0.5rem 1.2rem;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s, color 0.3s, transform 0.3s ease;
+    }
+    .lang-switch button:hover {
+      background-color: var(--highlight);
+      color: white;
+      transform: scale(1.05);
+    }
+    h1 {
+      text-align: center;
+      color: var(--main-color);
+      margin-bottom: 2rem;
+      text-shadow: 0 0 10px var(--main-color);
+      font-size: 2.5rem;
+      transition: color 0.3s ease;
+    }
+    .role-selector {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin: 2rem auto;
+    }
+    .role-selector img {
+      width: 60px;
+      height: 60px;
+      border-radius: 12px;
+      border: 2px solid var(--main-color);
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .role-selector img:hover {
+      transform: scale(1.15);
+      box-shadow: 0 0 12px var(--highlight);
+    }
+    .role-section {
+      display: none;
+      max-width: 900px;
+      margin: 0 auto;
+      background-color: rgba(30, 30, 47, 0.96);
+      padding: 2rem;
+      border-radius: 14px;
+      box-shadow: 0 0 24px var(--highlight);
+      animation: fadeInSlide 0.6s ease-in-out;
+    }
+    .role-section.active {
+      display: block;
+    }
+    .role-card {
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      background-color: #1e1e2f;
+      border-left: 6px solid var(--main-color);
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+    .role-card:hover {
+      transform: translateX(5px);
+      box-shadow: 0 0 12px var(--highlight);
+    }
+    .role-card h2 {
+      margin-bottom: 0.5rem;
+      color: var(--highlight);
+      font-size: 1.5rem;
+    }
+    .role-card p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+    @keyframes fadeInSlide {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img class="logo" src="https://i.ibb.co/Z17chK36/Rocket-League-Emblem.png" alt="GIOXI Logo">
+    <img class="menu-icon" src="https://i.ibb.co/v4r8NrzY/ef6574e3-290d-4b2c-b12d-4cf70f478395.png" alt="menu" onclick="document.querySelector('.menu').classList.toggle('show')">
+    <div class="menu">
+      <div class="close-btn" onclick="document.querySelector('.menu').classList.remove('show')">✖</div>
+      <a href="index.html">🏠 Home</a>
+      <a href="chi-sono.html">🧠 Chi Sono</a>
+      <a href="ringraziamenti.html">🙏 Ringraziamenti</a>
+      <a href="tornei.html">🏆 Tornei</a>
+      <a href="giochi.html">🎮 Giochi</a>
+      <a href="ruoli.html">🎯 Ruoli</a>
+      <a href="statistiche.html">📊 Statistiche</a>
+      <a href="setup.html">🛠 Setup</a>
+    </div>
+  </header>
+
+  <h1 id="roles-title" data-it="🎯 I miei ruoli" data-en="🎯 My Roles" data-es="🎯 Mis Roles">🎯 I miei ruoli</h1>
+
+  <div class="role-selector">
+    <img src="https://i.ibb.co/svBX5DGB/images-steamusercontent.jpg" alt="R6" onclick="showRoles('r6')">
+    <img src="https://i.ibb.co/svGmKqXX/E1063325-3.jpg" alt="Valorant" onclick="showRoles('valorant')">
+    <img src="https://i.ibb.co/bgjHzWdf/v-MT43-JO2-Pr5-JZBP1j-Sjw6-Vh-Qg-Oe-C5m-XZ.jpg" alt="Rocket League" onclick="showRoles('rocket')">
+    <img src="https://i.ibb.co/KxThxNWn/high-resolution-clash-royale-png-icon-21.png" alt="Clash Royale" onclick="showRoles('clash')">
+    <img src="https://i.ibb.co/xK1zgfLZ/Fortnite-F-lettermark-logo.png" alt="Fortnite" onclick="showRoles('fortnite')">
+  </div>
+  <script>
+    function showRoles(id) {
+      document.querySelectorAll('.role-section').forEach(section => {
+        section.classList.remove('active');
+      });
+      document.getElementById(id).classList.add('active');
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+</body>
+  <!-- ... tutto il contenuto HTML precedente rimane invariato fino a ... -->
+  <div id="r6" class="role-section active">
+    <div class="role-card">
+      <h2>Entry Fragger</h2>
+      <p>Ruolo d'assalto, entro per primo nei fight e apro i round con kill decisive.</p>
+    </div>
+    <div class="role-card">
+      <h2>Support</h2>
+      <p>Gestione info, droni e utilità per facilitare l'ingresso degli altri compagni.</p>
+    </div>
+    <div class="role-card">
+      <h2>IGL</h2>
+      <p>Coordinatore del team, chiamo le strategie e gestisco le rotazioni in tempo reale.</p>
+    </div>
+  </div>
+
+  <div id="valorant" class="role-section">
+    <div class="role-card">
+      <h2>Duelist</h2>
+      <p>Primo ad entrare in site, specializzato in aim e movimenti aggressivi.</p>
+    </div>
+    <div class="role-card">
+      <h2>Initiator</h2>
+      <p>Avvia le azioni offensive, usando utility per disturbare e aprire varchi nei nemici.</p>
+    </div>
+    <div class="role-card">
+      <h2>Controller</h2>
+      <p>Gestione fumo e controllo mappa, cruciale per creare spazi sicuri al team.</p>
+    </div>
+  </div>
+
+  <div id="rocket" class="role-section">
+    <div class="role-card">
+      <h2>Attaccante</h2>
+      <p>Sono il principale scorer del team, cerco le finalizzazioni e metto pressione in attacco.</p>
+    </div>
+    <div class="role-card">
+      <h2>Difensore</h2>
+      <p>Mi occupo di mantenere la porta chiusa, prevedendo tiri e bloccando i contropiedi.</p>
+    </div>
+    <div class="role-card">
+      <h2>All-Rounder</h2>
+      <p>Adatto a qualsiasi situazione, mi adatto a seconda delle necessità del team in tempo reale.</p>
+    </div>
+  </div>
+
+  <div id="clash" class="role-section">
+    <div class="role-card">
+      <h2>Deck Builder</h2>
+      <p>Creo mazzi competitivi in base al meta e all'avversario, massimizzando sinergie e controgiocate.</p>
+    </div>
+    <div class="role-card">
+      <h2>Stratega</h2>
+      <p>Pianifico l'ordine delle carte e le rotazioni con attenzione millimetrica, per ottenere il vantaggio.</p>
+    </div>
+    <div class="role-card">
+      <h2>Tournament Leader</h2>
+      <p>Guidando team nei tornei, mi occupo di pianificare match e allenamenti mirati.</p>
+    </div>
+  </div>
+
+  <div id="fortnite" class="role-section">
+    <div class="role-card">
+      <h2>Builder</h2>
+      <p>Costruisco rapidamente per difesa e controllo mappa, fondamentale nei 1v1 clutch e build fight.</p>
+    </div>
+    <div class="role-card">
+      <h2>IGL</h2>
+      <p>Guido il team durante le rotazioni, gestendo tempistiche di attacco e posizione in safe zone.</p>
+    </div>
+    <div class="role-card">
+      <h2>Support / Anchor</h2>
+      <p>Gestisco healing, utility e materiali, aiutando il team a sopravvivere nei momenti critici.</p>
+    </div>
+  </div>
+
+  <script>
+    function showRoles(id) {
+      document.querySelectorAll('.role-section').forEach(section => {
+        section.classList.remove('active');
+      });
+      document.getElementById(id).classList.add('active');
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
+
+</html>
