@@ -174,25 +174,33 @@
     <img class="menu-icon" src="https://i.ibb.co/v4r8NrzY/ef6574e3-290d-4b2c-b12d-4cf70f478395.png" alt="menu" onclick="toggleMenu()">
     <div class="menu" id="menu">
       <div class="close-btn" onclick="toggleMenu()">✖</div>
-      <a href="index.html">🏠 Home</a>
-      <a href="chi-sono.html">🧠 Chi Sono</a>
-      <a href="ringraziamenti.html">🙏 Ringraziamenti</a>
-      <a href="tornei.html">🏆 Tornei</a>
-      <a href="giochi.html">🎮 Giochi</a>
-      <a href="ruoli.html">🎯 Ruoli</a>
-      <a href="statistiche.html">📊 Statistiche</a>
-      <a href="setup.html">🛠 Setup</a>
+      <a href="index.html" data-it="🏠 Home" data-en="🏠 Home" data-es="🏠 Inicio">🏠 Home</a>
+      <a href="chi-sono.html" data-it="🧠 Chi Sono" data-en="🧠 About Me" data-es="🧠 Sobre Mí">🧠 Chi Sono</a>
+      <a href="ringraziamenti.html" data-it="🙏 Ringraziamenti" data-en="🙏 Thanks" data-es="🙏 Agradecimientos">🙏 Ringraziamenti</a>
+      <a href="tornei.html" data-it="🏆 Tornei" data-en="🏆 Tournaments" data-es="🏆 Torneos">🏆 Tornei</a>
+      <a href="giochi.html" data-it="🎮 Giochi" data-en="🎮 Games" data-es="🎮 Juegos">🎮 Giochi</a>
+      <a href="ruoli.html" data-it="🎯 Ruoli" data-en="🎯 Roles" data-es="🎯 Roles">🎯 Ruoli</a>
+      <a href="statistiche.html" data-it="📊 Statistiche" data-en="📊 Stats" data-es="📊 Estadísticas">📊 Statistiche</a>
+      <a href="setup.html" data-it="🛠 Setup" data-en="🛠 Setup" data-es="🛠 Configuración">🛠 Setup</a>
     </div>
   </header>
 
-  <script>
-    function toggleMenu() {
-      const menu = document.getElementById('menu');
-      menu.classList.toggle('show');
-    }
-  </script>
-</body>
-  <!-- ... tutto il contenuto HTML precedente rimane invariato fino a ... -->
+  <div class="lang-switch">
+    <button onclick="setLanguage('it')">🇮🇹 Italiano</button>
+    <button onclick="setLanguage('en')">🇬🇧 English</button>
+    <button onclick="setLanguage('es')">🇪🇸 Español</button>
+  </div>
+
+  <h1 id="roles-title" data-it="🎯 I miei ruoli" data-en="🎯 My Roles" data-es="🎯 Mis Roles">🎯 I miei ruoli</h1>
+
+  <div class="role-selector">
+    <img src="https://i.ibb.co/svGmKqXX/E1063325-3.jpg" alt="R6" onclick="showRoles('r6')">
+    <img src="https://i.ibb.co/svBX5DGB/images-steamusercontent.jpg" alt="Valorant" onclick="showRoles('valorant')">
+    <img src="https://i.ibb.co/bgjHzWdf/v-MT43-JO2-Pr5-JZBP1j-Sjw6-Vh-Qg-Oe-C5m-XZ.jpg" alt="Rocket League" onclick="showRoles('rocket')">
+    <img src="https://i.ibb.co/KxThxNWn/high-resolution-clash-royale-png-icon-21.png" alt="Clash Royale" onclick="showRoles('clash')">
+    <img src="https://i.ibb.co/xK1zgfLZ/Fortnite-F-lettermark-logo.png" alt="Fortnite" onclick="showRoles('fortnite')">
+  </div>
+
   <div id="r6" class="role-section active">
     <div class="role-card">
       <h2>Entry Fragger</h2>
@@ -208,76 +216,33 @@
     </div>
   </div>
 
-  <div id="valorant" class="role-section">
-    <div class="role-card">
-      <h2>Duelist</h2>
-      <p>Primo ad entrare in site, specializzato in aim e movimenti aggressivi.</p>
-    </div>
-    <div class="role-card">
-      <h2>Initiator</h2>
-      <p>Avvia le azioni offensive, usando utility per disturbare e aprire varchi nei nemici.</p>
-    </div>
-    <div class="role-card">
-      <h2>Controller</h2>
-      <p>Gestione fumo e controllo mappa, cruciale per creare spazi sicuri al team.</p>
-    </div>
-  </div>
-
-  <div id="rocket" class="role-section">
-    <div class="role-card">
-      <h2>Attaccante</h2>
-      <p>Sono il principale scorer del team, cerco le finalizzazioni e metto pressione in attacco.</p>
-    </div>
-    <div class="role-card">
-      <h2>Difensore</h2>
-      <p>Mi occupo di mantenere la porta chiusa, prevedendo tiri e bloccando i contropiedi.</p>
-    </div>
-    <div class="role-card">
-      <h2>All-Rounder</h2>
-      <p>Adatto a qualsiasi situazione, mi adatto a seconda delle necessità del team in tempo reale.</p>
-    </div>
-  </div>
-
-  <div id="clash" class="role-section">
-    <div class="role-card">
-      <h2>Deck Builder</h2>
-      <p>Creo mazzi competitivi in base al meta e all'avversario, massimizzando sinergie e controgiocate.</p>
-    </div>
-    <div class="role-card">
-      <h2>Stratega</h2>
-      <p>Pianifico l'ordine delle carte e le rotazioni con attenzione millimetrica, per ottenere il vantaggio.</p>
-    </div>
-    <div class="role-card">
-      <h2>Tournament Leader</h2>
-      <p>Guidando team nei tornei, mi occupo di pianificare match e allenamenti mirati.</p>
-    </div>
-  </div>
-
-  <div id="fortnite" class="role-section">
-    <div class="role-card">
-      <h2>Builder</h2>
-      <p>Costruisco rapidamente per difesa e controllo mappa, fondamentale nei 1v1 clutch e build fight.</p>
-    </div>
-    <div class="role-card">
-      <h2>IGL</h2>
-      <p>Guido il team durante le rotazioni, gestendo tempistiche di attacco e posizione in safe zone.</p>
-    </div>
-    <div class="role-card">
-      <h2>Support / Anchor</h2>
-      <p>Gestisco healing, utility e materiali, aiutando il team a sopravvivere nei momenti critici.</p>
-    </div>
-  </div>
+  <div id="valorant" class="role-section"></div>
+  <div id="rocket" class="role-section"></div>
+  <div id="clash" class="role-section"></div>
+  <div id="fortnite" class="role-section"></div>
 
   <script>
+    function toggleMenu() {
+      const menu = document.getElementById('menu');
+      menu.classList.toggle('show');
+    }
+
+    function setLanguage(lang) {
+      document.querySelectorAll('[data-it]').forEach(el => {
+        el.textContent = el.dataset[lang];
+      });
+    }
+
     function showRoles(id) {
       document.querySelectorAll('.role-section').forEach(section => {
         section.classList.remove('active');
       });
-      document.getElementById(id).classList.add('active');
-      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+      const target = document.getElementById(id);
+      if (target) {
+        target.classList.add('active');
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   </script>
 </body>
-</html>
-
 </html>
