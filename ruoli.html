@@ -169,80 +169,81 @@
   </style>
 </head>
 <body>
-  <header>
-    <a href="index.html"><img class="logo" src="https://i.ibb.co/DHZzMwPP/99b7b37d-9c84-4145-8a4e-9b4ea6a69154.png" alt="GIOXI Logo"></a>
-    <img class="menu-icon" src="https://i.ibb.co/v4r8NrzY/ef6574e3-290d-4b2c-b12d-4cf70f478395.png" alt="menu" onclick="toggleMenu()">
-    <div class="menu" id="menu">
-      <div class="close-btn" onclick="toggleMenu()">✖</div>
-      <a href="index.html" data-it="🏠 Home" data-en="🏠 Home" data-es="🏠 Inicio">🏠 Home</a>
-      <a href="chi-sono.html" data-it="🧠 Chi Sono" data-en="🧠 About Me" data-es="🧠 Sobre Mí">🧠 Chi Sono</a>
-      <a href="ringraziamenti.html" data-it="🙏 Ringraziamenti" data-en="🙏 Thanks" data-es="🙏 Agradecimientos">🙏 Ringraziamenti</a>
-      <a href="tornei.html" data-it="🏆 Tornei" data-en="🏆 Tournaments" data-es="🏆 Torneos">🏆 Tornei</a>
-      <a href="giochi.html" data-it="🎮 Giochi" data-en="🎮 Games" data-es="🎮 Juegos">🎮 Giochi</a>
-      <a href="ruoli.html" data-it="🎯 Ruoli" data-en="🎯 Roles" data-es="🎯 Roles">🎯 Ruoli</a>
-      <a href="statistiche.html" data-it="📊 Statistiche" data-en="📊 Stats" data-es="📊 Estadísticas">📊 Statistiche</a>
-      <a href="setup.html" data-it="🛠 Setup" data-en="🛠 Setup" data-es="🛠 Configuración">🛠 Setup</a>
-    </div>
-  </header>
+  <h1 data-it="🎯 I miei ruoli" data-en="🎯 My Roles" data-es="🎯 Mis Roles">🎯 I miei ruoli</h1>
 
-  <div class="lang-switch">
-    <button onclick="setLanguage('it')">🇮🇹 Italiano</button>
-    <button onclick="setLanguage('en')">🇬🇧 English</button>
-    <button onclick="setLanguage('es')">🇪🇸 Español</button>
-  </div>
-
-  <h1 id="roles-title" data-it="🎯 I miei ruoli" data-en="🎯 My Roles" data-es="🎯 Mis Roles">🎯 I miei ruoli</h1>
-
-  <div class="role-selector">
-    <img src="https://i.ibb.co/svGmKqXX/E1063325-3.jpg" alt="R6" onclick="showRoles('r6')">
-    <img src="https://i.ibb.co/svBX5DGB/images-steamusercontent.jpg" alt="Valorant" onclick="showRoles('valorant')">
-    <img src="https://i.ibb.co/bgjHzWdf/v-MT43-JO2-Pr5-JZBP1j-Sjw6-Vh-Qg-Oe-C5m-XZ.jpg" alt="Rocket League" onclick="showRoles('rocket')">
-    <img src="https://i.ibb.co/KxThxNWn/high-resolution-clash-royale-png-icon-21.png" alt="Clash Royale" onclick="showRoles('clash')">
-    <img src="https://i.ibb.co/xK1zgfLZ/Fortnite-F-lettermark-logo.png" alt="Fortnite" onclick="showRoles('fortnite')">
-  </div>
-
-  <div id="r6" class="role-section active">
+  <!-- Rocket League -->
+  <div id="rocket" class="role-section">
     <div class="role-card">
-      <h2>Entry Fragger</h2>
-      <p>Ruolo d'assalto, entro per primo nei fight e apro i round con kill decisive.</p>
+      <h2 data-it="Attaccante" data-en="Striker" data-es="Delantero">Attaccante</h2>
+      <p data-it="Mi occupo di finalizzare l’azione, segnare gol e capitalizzare ogni opportunità creata. Uso traiettorie veloci, pre-jump e riflessi per battere i difensori. Sono il terminale offensivo, sempre pronto a colpire." 
+         data-en="I’m responsible for finishing plays, scoring goals and converting every opportunity. I rely on fast shots, pre-jumps and sharp reflexes. I'm the offensive spearhead, always ready to strike."
+         data-es="Me encargo de finalizar jugadas, marcar goles y aprovechar cada oportunidad. Uso tiros rápidos, pre-jumps y reflejos agudos. Soy la punta ofensiva, siempre listo para atacar.">
+        Mi occupo di finalizzare l’azione, segnare gol e capitalizzare ogni opportunità creata. Uso traiettorie veloci, pre-jump e riflessi per battere i difensori. Sono il terminale offensivo, sempre pronto a colpire.
+      </p>
     </div>
     <div class="role-card">
-      <h2>Support</h2>
-      <p>Gestione info, droni e utilità per facilitare l'ingresso degli altri compagni.</p>
+      <h2 data-it="Difensore" data-en="Defender" data-es="Defensor">Difensore</h2>
+      <p data-it="La mia priorità è proteggere la porta e anticipare i movimenti avversari. Uso clear precisi, salti controllati e rotazioni perfette. Sono il baluardo del team: se l’avversario non segna, vinciamo." 
+         data-en="My job is to protect the goal and predict opponents' moves. I use accurate clears, controlled aerials and perfect rotations. I'm the team’s last wall: if they don’t score, we win."
+         data-es="Mi labor es proteger la portería y anticipar movimientos enemigos. Uso despejes precisos, vuelos controlados y rotaciones perfectas. Soy el muro final: si no marcan, ganamos.">
+        La mia priorità è proteggere la porta e anticipare i movimenti avversari. Uso clear precisi, salti controllati e rotazioni perfette. Sono il baluardo del team: se l’avversario non segna, vinciamo.
+      </p>
     </div>
     <div class="role-card">
-      <h2>IGL</h2>
-      <p>Coordinatore del team, chiamo le strategie e gestisco le rotazioni in tempo reale.</p>
+      <h2 data-it="All-Rounder" data-en="All-Rounder" data-es="Versátil">All-Rounder</h2>
+      <p data-it="Adatto il mio stile alla situazione: attacco, difendo, assisto. Uso comunicazione e lettura di gioco per coprire ogni ruolo al bisogno. Sono il collante tattico che tiene in piedi l’equilibrio." 
+         data-en="I adapt to any situation: I attack, defend and assist. I rely on communication and game sense to fill any gap. I'm the tactical glue holding the balance together."
+         data-es="Me adapto a cualquier situación: ataco, defiendo y asisto. Uso comunicación y sentido del juego para cubrir lo que haga falta. Soy el pegamento táctico del equipo.">
+        Adatto il mio stile alla situazione: attacco, difendo, assisto. Uso comunicazione e lettura di gioco per coprire ogni ruolo al bisogno. Sono il collante tattico che tiene in piedi l’equilibrio.
+      </p>
+    </div>
+  </div>
+  <!-- Clash Royale -->
+  <div id="clash" class="role-section">
+    <div class="role-card">
+      <h2 data-it="Deck Builder" data-en="Deck Builder" data-es="Constructor de Mazos">Deck Builder</h2>
+      <p data-it="Studio metagame e sinergie per creare mazzi competitivi. Uso logica, esperienza e prove sul campo per bilanciare ogni carta. Ogni mia scelta ha uno scopo: sorprendere e dominare." 
+         data-en="I study the meta and card synergies to build competitive decks. I use logic, experience and testing to balance every pick. Each card has a purpose: to surprise and dominate."
+         data-es="Estudio el metajuego y las sinergias para crear mazos competitivos. Uso lógica, experiencia y pruebas para balancear cada carta. Cada elección tiene un propósito: sorprender y dominar.">
+        Studio metagame e sinergie per creare mazzi competitivi. Uso logica, esperienza e prove sul campo per bilanciare ogni carta. Ogni mia scelta ha uno scopo: sorprendere e dominare.
+      </p>
+    </div>
+    <div class="role-card">
+      <h2 data-it="Player" data-en="Player" data-es="Jugador">Player</h2>
+      <p data-it="Affronto match ad alto livello con gestione perfetta dell’elixir. Calcolo, difendo, contrattacco. Riconosco il ciclo dell’avversario e lo punisco nel momento giusto. La pazienza è la mia arma." 
+         data-en="I play high-level matches with perfect elixir management. I calculate, defend, counter-attack. I track opponent cycles and punish at the right moment. Patience is my weapon."
+         data-es="Juego partidas de alto nivel con manejo perfecto del elixir. Calculo, defiendo, contraataco. Conozco el ciclo del rival y castigo en el momento justo. La paciencia es mi arma.">
+        Affronto match ad alto livello con gestione perfetta dell’elixir. Calcolo, difendo, contrattacco. Riconosco il ciclo dell’avversario e lo punisco nel momento giusto. La pazienza è la mia arma.
+      </p>
     </div>
   </div>
 
-  <div id="valorant" class="role-section"></div>
-  <div id="rocket" class="role-section"></div>
-  <div id="clash" class="role-section"></div>
-  <div id="fortnite" class="role-section"></div>
-
-  <script>
-    function toggleMenu() {
-      const menu = document.getElementById('menu');
-      menu.classList.toggle('show');
-    }
-
-    function setLanguage(lang) {
-      document.querySelectorAll('[data-it]').forEach(el => {
-        el.textContent = el.dataset[lang];
-      });
-    }
-
-    function showRoles(id) {
-      document.querySelectorAll('.role-section').forEach(section => {
-        section.classList.remove('active');
-      });
-      const target = document.getElementById(id);
-      if (target) {
-        target.classList.add('active');
-        target.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-  </script>
+  <!-- Fortnite -->
+  <div id="fortnite" class="role-section">
+    <div class="role-card">
+      <h2 data-it="Fragger" data-en="Fragger" data-es="Agresor">Fragger</h2>
+      <p data-it="Sono la forza d’impatto del team. Pusho, sparo, elimino. Mi muovo con edit rapidi e shotgun precisi. Ogni fight è un’opportunità per prendere spazio e punire. Vivo nel caos, ma lo controllo." 
+         data-en="I'm the team's impact force. I push, shoot and eliminate. I move with fast edits and precise shots. Every fight is a chance to gain ground. I thrive in chaos — and control it."
+         data-es="Soy la fuerza de choque del equipo. Avanzo, disparo y elimino. Me muevo con ediciones rápidas y disparos precisos. Cada combate es una oportunidad para dominar. Vivo en el caos, pero lo controlo.">
+        Sono la forza d’impatto del team. Pusho, sparo, elimino. Mi muovo con edit rapidi e shotgun precisi. Ogni fight è un’opportunità per prendere spazio e punire. Vivo nel caos, ma lo controllo.
+      </p>
+    </div>
+    <div class="role-card">
+      <h2 data-it="IGL" data-en="IGL" data-es="Líder">IGL</h2>
+      <p data-it="Gestisco le rotazioni, le posizioni, il timing. Sono la voce del team: decido se fightare o evitare, guido le call nei momenti cruciali. Conosco la mappa a memoria e so cosa fare prima che succeda." 
+         data-en="I manage rotations, positioning and timing. I'm the team’s voice: I decide when to fight or avoid, guiding callouts in key moments. I know the map by heart and plan before things happen."
+         data-es="Gestiono rotaciones, posiciones y tiempos. Soy la voz del equipo: decido cuándo pelear o rotar, y guío las llamadas en momentos clave. Conozco el mapa de memoria y me adelanto a los eventos.">
+        Gestisco le rotazioni, le posizioni, il timing. Sono la voce del team: decido se fightare o evitare, guido le call nei momenti cruciali. Conosco la mappa a memoria e so cosa fare prima che succeda.
+      </p>
+    </div>
+    <div class="role-card">
+      <h2 data-it="Support" data-en="Support" data-es="Soporte">Support</h2>
+      <p data-it="Costruisco per coprire, passo materiali, proteggo i compagni in fight. Uso l’altezza per difendere, non per vantarmi. Il mio ruolo è silenzioso ma vitale: tengo il team in vita, letteralmente." 
+         data-en="I build to cover, share materials and protect teammates in fights. I use height to defend, not to flex. My role is silent but vital: I literally keep the team alive."
+         data-es="Construyo para cubrir, paso materiales y protejo a los aliados. Uso la altura para defender, no para presumir. Mi rol es silencioso pero vital: mantengo al equipo con vida.">
+        Costruisco per coprire, passo materiali, proteggo i compagni in fight. Uso l’altezza per difendere, non per vantarmi. Il mio ruolo è silenzioso ma vitale: tengo il team in vita, letteralmente.
+      </p>
+    </div>
+  </div>
 </body>
 </html>
