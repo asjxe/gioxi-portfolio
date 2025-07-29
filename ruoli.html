@@ -14,163 +14,134 @@
       --highlight: #ff4757;
       --font: 'Oxanium', cursive;
     }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin:0; padding:0; box-sizing:border-box; }
     body {
       font-family: var(--font);
       background: var(--bg-color) url('https://i.ibb.co/Q7tGChf7/c49e571e-b3fb-49f8-8674-e7bbe9be79f9.png') repeat;
       color: var(--text-color);
-      padding: 2rem;
     }
     header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      background-color: rgba(0, 0, 0, 0.85);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      display:flex; justify-content:space-between; align-items:center;
+      padding:1rem 2rem;
+      background-color: rgba(0,0,0,0.85);
+      position:sticky; top:0; z-index:1000;
     }
-    .logo {
-      height: 55px;
-      cursor: pointer;
-    }
-    .menu-icon {
-      height: 40px;
-      cursor: pointer;
-    }
+    .logo { height:55px; cursor:pointer; }
+    .menu-icon { height:40px; cursor:pointer; }
     .menu {
-      position: absolute;
-      top: 70px;
-      right: 20px;
-      background-color: var(--secondary-color);
-      border-radius: 12px;
-      padding: 1rem;
-      display: none;
-      flex-direction: column;
-      box-shadow: 0 0 20px var(--highlight);
-      z-index: 2000;
-      min-width: 260px;
+      position:absolute; top:70px; right:20px;
+      background:var(--secondary-color);
+      border-radius:12px; padding:1rem;
+      display:none; flex-direction:column;
+      box-shadow:0 0 20px var(--highlight);
+      min-width:260px; z-index:2000;
     }
-    .menu.show {
-      display: flex;
-    }
+    .menu.show { display:flex; }
     .menu a {
-      text-decoration: none;
       color: var(--text-color);
-      padding: 0.5rem 0;
-      font-weight: bold;
-      font-size: 1.1rem;
+      text-decoration:none;
+      font-weight:bold; font-size:1.1rem;
+      padding:0.5rem 0;
     }
     .menu a:hover {
-      background-color: var(--highlight);
-      color: white;
-      padding-left: 10px;
-      border-radius: 6px;
+      background:var(--highlight); color:#fff;
+      padding-left:10px; border-radius:6px;
     }
     .close-btn {
-      align-self: flex-end;
-      font-size: 1.5rem;
-      cursor: pointer;
-      margin-bottom: 0.5rem;
-      color: var(--highlight);
+      align-self:flex-end; font-size:1.5rem;
+      cursor:pointer; color: var(--highlight);
+      margin-bottom:0.5rem;
     }
     .lang-switch {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 2rem;
+      display:flex; justify-content:center; gap:1rem;
+      margin:1rem;
     }
     .lang-switch button {
-      background-color: transparent;
-      color: var(--text-color);
-      border: 2px solid var(--highlight);
-      padding: 0.5rem 1.2rem;
-      border-radius: 10px;
-      font-weight: bold;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: background 0.3s, color 0.3s, transform 0.3s ease;
+      background:transparent; color:var(--text-color);
+      border:2px solid var(--highlight);
+      padding:0.5rem 1.2rem; border-radius:10px;
+      font-weight:bold; cursor:pointer;
+      transition:0.3s;
     }
     .lang-switch button:hover {
-      background-color: var(--highlight);
-      color: white;
-      transform: scale(1.05);
+      background:var(--highlight); color:white;
+      transform:scale(1.05);
     }
     h1 {
-      text-align: center;
-      color: var(--main-color);
-      margin-bottom: 2rem;
-      text-shadow: 0 0 10px var(--main-color);
-      font-size: 2.5rem;
-      transition: color 0.3s ease;
+      text-align:center; margin:2rem 0;
+      color:var(--main-color); text-shadow:0 0 10px var(--main-color);
+      font-size:2.5rem; transition:0.3s;
     }
     .role-selector {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      margin: 2rem auto;
+      display:flex; justify-content:center;
+      flex-wrap:wrap; gap:1.5rem; margin-bottom:2rem;
     }
     .role-selector img {
-      width: 60px;
-      height: 60px;
-      border-radius: 12px;
-      border: 2px solid var(--main-color);
-      cursor: pointer;
-      transition: transform 0.3s, box-shadow 0.3s;
+      width:60px; height:60px;
+      border:2px solid var(--main-color);
+      border-radius:12px; cursor:pointer;
+      transition:0.3s;
     }
     .role-selector img:hover {
-      transform: scale(1.15);
-      box-shadow: 0 0 12px var(--highlight);
+      transform:scale(1.15); box-shadow:0 0 12px var(--highlight);
     }
     .role-section {
-      display: none;
-      max-width: 900px;
-      margin: 0 auto;
-      background-color: rgba(30, 30, 47, 0.96);
-      padding: 2rem;
-      border-radius: 14px;
-      box-shadow: 0 0 24px var(--highlight);
-      animation: fadeInSlide 0.6s ease-in-out;
+      display:none; max-width:900px;
+      margin:0 auto; background:rgba(30,30,47,0.96);
+      padding:2rem; border-radius:14px;
+      box-shadow:0 0 24px var(--highlight);
+      animation:fadeInSlide 0.6s ease-in-out;
     }
-    .role-section.active {
-      display: block;
-    }
+    .role-section.active { display:block; }
     .role-card {
-      margin-bottom: 1.5rem;
-      padding: 1rem;
-      background-color: #1e1e2f;
-      border-left: 6px solid var(--main-color);
-      border-radius: 10px;
-      transition: all 0.3s ease;
+      margin-bottom:1.5rem; background:#1e1e2f;
+      padding:1rem; border-left:6px solid var(--main-color);
+      border-radius:10px;
+      transition:0.3s;
     }
     .role-card:hover {
-      transform: translateX(5px);
-      box-shadow: 0 0 12px var(--highlight);
+      transform:translateX(5px);
+      box-shadow:0 0 12px var(--highlight);
     }
-    .role-card h2 {
-      margin-bottom: 0.5rem;
-      color: var(--highlight);
-      font-size: 1.5rem;
-    }
-    .role-card p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-    }
+    .role-card h2 { margin-bottom:0.5rem; color:var(--highlight); font-size:1.5rem; }
+    .role-card p { font-size:1.1rem; line-height:1.6; }
     @keyframes fadeInSlide {
-      0% { opacity: 0; transform: translateY(20px); }
-      100% { opacity: 1; transform: translateY(0); }
+      from { opacity:0; transform: translateY(20px); }
+      to { opacity:1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
+  <header>
+    <a href="index.html"><img class="logo" src="https://i.ibb.co/DHZzMwPP/99b7b37d-9c84-4145-8a4e-9b4ea6a69154.png" alt="GIOXI Logo"></a>
+    <img class="menu-icon" src="https://i.ibb.co/v4r8NrzY/ef6574e3-290d-4b2c-b12d-4cf70f478395.png" alt="menu" onclick="toggleMenu()">
+    <div class="menu" id="menu">
+      <div class="close-btn" onclick="toggleMenu()">✖</div>
+      <a href="index.html" data-it="🏠 Home" data-en="🏠 Home" data-es="🏠 Inicio">🏠 Home</a>
+      <a href="chi-sono.html" data-it="🧠 Chi Sono" data-en="🧠 About Me" data-es="🧠 Sobre Mí">🧠 Chi Sono</a>
+      <a href="ringraziamenti.html" data-it="🙏 Ringraziamenti" data-en="🙏 Thanks" data-es="🙏 Agradecimientos">🙏 Ringraziamenti</a>
+      <a href="tornei.html" data-it="🏆 Tornei" data-en="🏆 Tournaments" data-es="🏆 Torneos">🏆 Tornei</a>
+      <a href="giochi.html" data-it="🎮 Giochi" data-en="🎮 Games" data-es="🎮 Juegos">🎮 Giochi</a>
+      <a href="ruoli.html" data-it="🎯 Ruoli" data-en="🎯 Roles" data-es="🎯 Roles">🎯 Ruoli</a>
+      <a href="statistiche.html" data-it="📊 Statistiche" data-en="📊 Stats" data-es="📊 Estadísticas">📊 Statistiche</a>
+      <a href="setup.html" data-it="🛠 Setup" data-en="🛠 Setup" data-es="🛠 Configuración">🛠 Setup</a>
+    </div>
+  </header>
+  <div class="lang-switch">
+    <button onclick="setLanguage('it')">🇮🇹 Italiano</button>
+    <button onclick="setLanguage('en')">🇬🇧 English</button>
+    <button onclick="setLanguage('es')">🇪🇸 Español</button>
+  </div>
   <h1 data-it="🎯 I miei ruoli" data-en="🎯 My Roles" data-es="🎯 Mis Roles">🎯 I miei ruoli</h1>
- <!-- R6 -->
+  <div class="role-selector">
+    <img src="https://i.ibb.co/svGmKqXX/E1063325-3.jpg" alt="R6" onclick="showRoles('r6')">
+    <img src="https://i.ibb.co/svBX5DGB/images-steamusercontent.jpg" alt="Valorant" onclick="showRoles('valorant')">
+    <img src="https://i.ibb.co/bgjHzWdf/v-MT43-JO2-Pr5-JZBP1j-Sjw6-Vh-Qg-Oe-C5m-XZ.jpg" alt="Rocket League" onclick="showRoles('rocket')">
+    <img src="https://i.ibb.co/Kx1zgfLZ/high-resolution-clash-royale-png-icon-21.png" alt="Clash Royale" onclick="showRoles('clash')">
+    <img src="https://i.ibb.co/xK1zgfLZ/Fortnite-F-lettermark-logo.png" alt="Fortnite" onclick="showRoles('fortnite')">
+  </div>
+
+<!-- R6 -->
   <div id="r6" class="role-section">
     <div class="role-card">
       <h2 data-it="Entry Fragger" data-en="Entry Fragger" data-es="Asaltante Inicial">Entry Fragger</h2>
@@ -299,6 +270,21 @@
         Costruisco per coprire, passo materiali, proteggo i compagni in fight. Uso l’altezza per difendere, non per vantarmi. Il mio ruolo è silenzioso ma vitale: tengo il team in vita, letteralmente.
       </p>
     </div>
-  </div>
+  </div> 
+  <script>
+    function toggleMenu() {
+      document.getElementById('menu').classList.toggle('show');
+    }
+    function setLanguage(lang) {
+      document.querySelectorAll('[data-it]').forEach(el => {
+        el.textContent = el.dataset[lang];
+      });
+    }
+    function showRoles(id) {
+      document.querySelectorAll('.role-section').forEach(s => s.classList.remove('active'));
+      let t = document.getElementById(id);
+      if (t) { t.classList.add('active'); t.scrollIntoView({behavior:'smooth'}); }
+    }
+  </script>
 </body>
 </html>
